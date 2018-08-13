@@ -1,7 +1,7 @@
 ## Setup
 This repo contains a game called [minesweeper](http://minesweeperonline.com/) with some partially completed code. The idea is to teach students some of the basics of programming by getting them to complete important bits of the code. I will continue adding tasks to this README as I go along. Note that one can easily copy paste the code in minesweeper.js into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
 
-![alt text]assets/codedotorg_workspace_console.png
+![alt text](assets/codedotorg_workspace_console.png "Note the denugging console printing things")
 
 
 ## Task 1
