@@ -29,7 +29,7 @@ Learning to apply indexing of Arrays, String concatenation and Looping in javasc
 
 
 ### The task
-The student's task is to figure out how to complete a function that returns a string representing the board, so that we may be able to print it in a nice way on the console. Here is how to go about it:
+The student's task is to figure out how to complete a function that returns a string representing the board. This string is then automatically printed on the console. Here is how to go about it:
 - Start by giving them an example of how a printed board should look like and how this task is set up.
 - Next ask them to complete the function `boardAsString` in `minesweeper.js` and returning a string from the function given the board. The student does not need to worry about console logging or how the printing happens, just the string representation of the board.
 - A bit of knowledge of function return values is required.
