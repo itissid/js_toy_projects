@@ -25,7 +25,7 @@ Learning to apply indexing of Arrays, String concatenation and Looping in javasc
   - When printing a string there are some special chars like '\n' that
   help print a new line. It is instructive to give toy examples in code.org to show what these special characters are like the tab char '\t'.
   Example what should `console.log("1\t2\t3\n4\t5\t6")` print?
-- Function signature and return values.
+- A bit of knowledge of function return values is required: Although this task does not require them to write any functions only complete the loop body.
 
 
 ### The task
