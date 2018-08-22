@@ -1,11 +1,11 @@
 ## Setup
-This repo contains a game called [minesweeper](http://minesweeperonline.com/) with some partially completed code. The main purpose of this repo is to teach students some of the basics of programming by getting them to complete important bits of the code. For this task you will need to focus on the file `minesweeper.js`. This README is a guide on how to use this task to help students get familiar with some code in javascript. Note that one can easily copy paste the code in `minesweeper.js` into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
+This repo contains a game called [minesweeper](http://minesweeperonline.com/) with some partially completed code and this README. The main purpose of this repo is to be used by an instructor to teach students some of the basics of programming by getting them to complete important bits of the code for the game. The instructor needs an environment where students can run and debug javascript code. DO NOT DISTRIBUTE THIS README TO STUDENTS AS IT CONTAINS SPOILERS. For this task you will need to focus on the file `minesweeper.js` in the `minesweeper/` directory in the root of this repo. This README is a guide on how to use this task to help students get familiar with some code in javascript. Note that one can easily copy paste the code in `minesweeper.js` into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
 
 ![alt text](assets/codedotorg_workspace_console.png "Note the denugging console printing things")
 
 
 ## Task 1
-Learning to apply indexing of Arrays, String concatenation and Looping in javascript using Minesweeper.
+Learning to apply indexing of Arrays, String concatenation and Looping in javascript.
 
 ### Prerequisites
 #### Get familiar with the game
