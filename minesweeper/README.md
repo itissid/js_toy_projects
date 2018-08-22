@@ -1,5 +1,5 @@
 ## Setup
-This repo contains a game called [minesweeper](http://minesweeperonline.com/) with some partially completed code. The idea is to teach students some of the basics of programming by getting them to complete important bits of the code. I will continue adding tasks to this README as I go along. Note that one can easily copy paste the code in minesweeper.js into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
+This repo contains a game called [minesweeper](http://minesweeperonline.com/) with some partially completed code. The main purpose of this repo is to teach students some of the basics of programming by getting them to complete important bits of the code. For this task you will need to focus on the file `minesweeper.js`. This README is a guide on how to use this task to help students get familiar with some code in javascript. Note that one can easily copy paste the code in `minesweeper.js` into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
 
 ![alt text](assets/codedotorg_workspace_console.png "Note the denugging console printing things")
 
@@ -16,7 +16,7 @@ Learning to apply indexing of Arrays, String concatenation and Looping in javasc
 - The students should understand what is the initial state of the mine field and how it changes. Drawing a `4*4` board with different states drawn on the white/black board can help the student understand, especially when they open a box that has no surrounding mine.
 - Next, the most important question that should get the creative juices of the students to flow: How one can represent a board in computer memory? Its an array of arrays or a matrix (if the students are familiar with those from math) What will the array contain initially? What will the array contain when we make a move? This is the easiest to use structure.
 
-#### What coding skills are needed
+#### What coding skills are needed for this assignment
 - What is for loop: Initial condition, step and stopping criteria?
   - Why are loops useful? Because we often need to take steps of from number X to Y which is useful for indexing. Because we often want to do somethings repeatedly like search for mines.
 	- How to use a variable in a loop to iterate through an array?
@@ -25,7 +25,7 @@ Learning to apply indexing of Arrays, String concatenation and Looping in javasc
   - When printing a string there are some special chars like '\n' that
   help print a new line. It is instructive to give toy examples in code.org to show what these special characters are like the tab char '\t'.
   Example what should `console.log("1\t2\t3\n4\t5\t6")` print?
-- A bit of knowledge of function return values is required: Although this task does not require them to write any functions only complete some missing code inside it.
+- A bit of knowledge of function return values is useful, although not required. The assignment does not require students to write any functions, only complete some missing code inside it in `minesweeper.js`.
 
 
 ### The task
