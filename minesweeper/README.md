@@ -1,8 +1,7 @@
 ## Setup
 This repo contains a game called [minesweeper](http://minesweeperonline.com/) with some partially completed code and this README. The main purpose of this repo is to be used by an instructor to teach students some of the basics of programming by getting them to complete important bits of the code for the game. The instructor needs an environment where students can run and debug javascript code. DO NOT DISTRIBUTE THIS README TO STUDENTS AS IT CONTAINS SPOILERS. For this task you will need to focus on the file `minesweeper.js` in the `minesweeper/` directory in the root of this repo. This README is a guide on how to use this task to help students get familiar with some code in javascript. Note that one can easily copy paste the code in `minesweeper.js` into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
 
-![alt text](assets/codedotorg_workspace_console.png "Note the denugging console printing things")
-
+![alt text](assets/codedotorg_workspace_console.png "Note the debugging console printing things")
 
 ## Task 1
 Learning to apply indexing of Arrays, String concatenation and Looping in javascript.
@@ -49,16 +48,21 @@ The student's task is to figure out how to complete a function that returns a st
   - Optional: They also learn about how arrays are laid out in memory.
 
 ## Task 2
-Generating a board: Given a function that returns 1 or 0 at random and an empty board represented by an array, generate a board with some mines.
+Creating a board with some mines in it.
 
-TODO: Complete details and code samples. Mostly dealing with conditional logic in a loop.
+#### What coding skills are needed for this task
+To implement this you need to understand
+- Basics of javascript like variables, expressions, types and arrays.
+- for loops
+- Basic understanding of conditional logic. This task is going to test this part specifically.
 
-TODO: Complete this task description after consulting with Vivek about the difficulty of task if they make sense for his class?
+### The task
+In this task students need to code up conditional logic that can generate a board. Again you will be working with `minesweeper.js` and  completing code for the function `generateRandomBoardTest`.
+Once completed there is a test function that prints this board that the student/instructor can run. This string is then automatically printed on the console.
+- Task 1 is not a prerequisite for this task but understanding the board representation using the array of array data structures is.
+- Students/Instructors can test their function by executing the `generateRandomBoardTest` in the script. Make sure you test with different board sizes to ensure the code is working.
 
-### Task 2.1
-Making a move. We will provide a function called `function move(board, position_row, position_col)` with some code completed. The idea is to make a move by changing the state of the box. The much harder code for opening the boxes recursively if the clicked position has no mine will be given. Again there is just some conditional logic to be filled out by a student in this exercise.
+### Outcomes:
+  - Problem Solving: The Student can think about how mines can be laid out in the field and how to encode conditional statements based on the value of a variable. in everyday coding, being able to code complex conditional logic is very useful. Another interesting aspect is thinking about the starting condition of a program. Typically any algorithm has a starting condition, a loop and a terminating condition.
 
-
-TODO: Complete details and code samples. Mostly dealing with conditional logic in a loop.
-
-TODO: Complete this task description after consulting with Vivek about the difficulty of task if they make sense for his class?
+  - Debugging: Now one may ask why is this task interesting? After all shouldn't we be doing the meat of the problem first? When we actually code up the game we want to know if we did the right thing. Printing things is the only way to know if things are working. This is often done in programming to measure progress and squash bugs.

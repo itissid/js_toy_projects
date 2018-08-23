@@ -44,28 +44,64 @@ function boardAsString(board) {
   M 3 1 2 M
   */
 
-  numberOfRows = board.length
-  numberOfCols = board[0].length
-  boardStr = ""
-  for(row = 0; row < /*What goes here*/; row++) {
-    for(col = 0; col < /*What goes here?*/; col++) {
-      // Complete some code here to add to the string boardStr
+  var numberOfRows = board.length
+  var numberOfCols = board[0].length
+  var boardStr = ""
+  for(var row = 0; row < numberOfRows; row++) {
+    for(var col = 0; col < numberOfCols; col++) {
+      boardStr += board[row][col]+" ";
     }
-    // What would you do to the boardStr here?
+    boardStr = boardStr.trim()+ "\n";
   }
   // Just return a board string
-  return boardStr
+  return boardStr;
+}
+/*--------------------------------------------------------------*/
+function generateRandomBoard(rows, columns, mineConcentration=40) {
+  /*
+  This function returns a board given its size. Note that the board will
+  contain only Mines or Empty squares using a mine_concentration of 40% by default.
+
+  This function uses a function called named `placeMine` which returns True of False
+  based on a "random number generator". What this means is if  mine_concentration is 40
+  then out of 100 cells in a grid approx 40 can be mines.
+  You can just treat the `placeMine` function like a black box that returns True if the program
+  should place a mine. All you have to do is complete the conditional statements.
+  */
+  var board = generateEmptyBoard(rows, columns);
+  for(var row = 0; row < rows; row++) {
+    for(var col = 0; col < columns; col++) {
+        var shouldPlaceMine = placeMine(mineConcentration)
+        /*Complete the conditional logic here to place a mine on the board*/
+    }
+  }
+  return board;
 }
 
-/*------------ DO NOT CHANGE THE CODE BELOW -------------------*/
-function printBoard() {
-  board1 = [
+/****************************************************************************************/
+/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING YOUR CODE ABOVE ***********/
+/****************************************************************************************/
+
+/**********Helper functions*************/
+function placeMine(mineConcentration) {
+  if(typeof(mineConcentration) !== "number" ) {
+    throw Error("Mine concentration can only be a number, but was type "+typeof(mineConcentration))
+  }
+  if(mineConcentration < 1 || mineConcentration >= 100) {
+    throw Error("Mine concentration only between 1 and 100% but was "+mineConcentration);
+  }
+  return Math.random()<(mineConcentration/100);
+}
+/*************************************/
+
+function printBoardTest() {
+  var board1 = [
     ['M', 'M', 'E', 'E', 'E'],
     ['M', 'E', 'M', 'E', 'E'],
     ['E', 'E', 'M', 'E', 'E'],
     ['M', 'M', 'E', 'E', 'M'],
     ['M', 'E', 'E', 'E', 'M']]
-  board2 = [
+  var board2 = [
       ['M', 'M', '2', '1', 'B'],
       ['M', '5', 'M', '2', 'B'],
       ['E', 'E', 'M', '3', '1'],
@@ -74,4 +110,31 @@ function printBoard() {
   console.log(boardAsString(board1));
   console.log(boardAsString(board2));
 }
-printBoard()
+
+function generateEmptyBoard(rows, cols) {
+  if(rows <= 0) {
+    throw Error("Number of rows cannot be less than 0");
+  }
+  if(cols <= 0) {
+    throw Error("Number of cols cannot be less than 0");
+  }
+  var board = [];
+  for(var row = 0; row < rows; row++) {
+    board.push([])
+    for(var col = 0; col < cols; col++) {
+        board[row].push("")
+    }
+  }
+  return board;
+}
+
+printBoardTest()
+
+function generateRandomBoardTest() {
+    var rows = 10
+    var cols = 10
+    var board = generateRandomBoard(rows, cols)
+    console.log(boardAsString(board))
+}
+
+generateRandomBoardTest()
