@@ -59,8 +59,12 @@ function boardAsString(board) {
 /*--------------------------------------------------------------*/
 function generateRandomBoard(rows, columns, mineConcentration=40) {
   /*
-  This function returns a board given its size. Note that the board will
-  contain only Mines or Empty squares using a mine_concentration of 40% by default.
+  rows: How many rows do you want in the board
+  columns: How many columns you want in the board
+  mineConcentration: what % of mines do you want in the board(between 1-100)?. Default=40%
+
+  This function returns a board given its size rows*columns. Note that the board can
+  contain only Mines or Empty squares and a mineConcentration of 40% by default.
 
   This function uses a function called named `placeMine` which returns True of False
   based on a "random number generator". What this means is if  mine_concentration is 40
@@ -78,6 +82,18 @@ function generateRandomBoard(rows, columns, mineConcentration=40) {
   return board;
 }
 
+function move(board, row, column) {
+  /*
+  * board: This is the mine sweeper board at any stage of the game, it may have open or closed squares.
+  * row: the row number where the user clicked on the board.
+  * column: the column number where the user clicked on the board.
+  * Use the function `openSquare` and `blowMine` depending on what the player selected.
+  * The complete signature of the functions is: `openSquare(board, row, column)` and `blowMine(board, row, column)`
+  * You will have to write the conditional statements and place those two statements at the appropriate location.
+  *
+  */
+}
+
 /****************************************************************************************/
 /******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING YOUR CODE ABOVE ***********/
 /****************************************************************************************/
@@ -90,8 +106,38 @@ function placeMine(mineConcentration) {
   if(mineConcentration < 1 || mineConcentration >= 100) {
     throw Error("Mine concentration only between 1 and 100% but was "+mineConcentration);
   }
-  return Math.random()<(mineConcentration/100);
+  return Math.random() < (mineConcentration/100);
 }
+
+function openSquare(board, row, column, visited = {}) {
+  var neighbourOffsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [1, 1], [-1, -1], [-1, 1], [1, -1]];
+  var neighbors = [];
+  visited[[row, column]] = true;
+  var numMines = 0;
+  neighbourOffsets.forEach(function(offset) {
+    var x = row + offset[0];
+    var y = column + offset[1];
+    if(visited[[x, y]] === undefined) {
+        if(x >=0 && x < board.length && y >= 0 && y < board[row].length) {
+
+          if(board[x][y] === 'M') {
+            numMines += 1;
+          }
+          //console.log(x, y, board[row][column]);
+          neighbors.push([x, y]);
+        }
+    }
+  });
+  console.log(row+" "+column+" "+numMines + "| "+neighbors);
+  if(numMines > 0) {
+      board[row][column] = numMines;
+  } else {
+    for(var i = 0; i < neighbors.length; i++) {
+        openSquare(board, neighbors[i][0], neighbors[i][1], visited);
+    }
+  }
+}
+
 /*************************************/
 
 function printBoardTest() {
@@ -128,7 +174,7 @@ function generateEmptyBoard(rows, cols) {
   return board;
 }
 
-printBoardTest()
+//printBoardTest()
 
 function generateRandomBoardTest() {
     var rows = 10
@@ -137,4 +183,50 @@ function generateRandomBoardTest() {
     console.log(boardAsString(board))
 }
 
-generateRandomBoardTest()
+//generateRandomBoardTest()
+
+
+function testOpen() {
+  var board = [
+    ['M', 'M', 'E', 'E', 'E'],
+    ['M', 'E', 'M', 'E', 'E'],
+    ['E', 'E', 'M', 'E', 'E'],
+    ['M', 'M', 'E', 'E', 'M'],
+    ['M', 'E', 'E', 'E', 'M']]
+  openSquareRecursively(board, 0, 2);
+  var expectedBoard = [
+    ['M', 'M',  2, 'E', 'E'],
+    ['M', 'E', 'M', 'E', 'E'],
+    ['E', 'E', 'M', 'E', 'E'],
+    ['M', 'M', 'E', 'E', 'M'],
+    ['M', 'E', 'E', 'E', 'M']];
+  console.log(board);
+  assertBoardEquals(board, expectedBoard);
+  // Next move
+  var expectedBoard = [
+    ['M', 'M',  2,  1, 'E'],
+    ['M', 'E', 'M', 2, 'E'],
+    ['E', 'E', 'M', 3,  1],
+    ['M', 'M', 'E', 'E', 'M'],
+    ['M', 'E', 'E', 'E', 'M']];
+  openSquareRecursively(board, 0, 4);
+  assertBoardEquals(board, expectedBoard);
+  console.log(".")
+}
+
+testOpen();
+
+function assertBoardEquals(b1, b2) {
+  var b1Str = boardAsString(b1);
+  var b2Str = boardAsString(b2);
+  if(b1.length !== b2.length || b1[0].length !== b2[0].length) {
+    throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
+  }
+  for(var i = 0; i < b1.length; i++) {
+    for(var j = 0; j< b1[i].length; j++) {
+      if (b1[i][j] !== b2[i][j]) {
+        throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
+      }
+    }
+  }
+}

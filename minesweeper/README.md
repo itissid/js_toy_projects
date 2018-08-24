@@ -66,3 +66,15 @@ Once completed there is a test function that prints this board that the student/
   - Problem Solving: The Student can think about how mines can be laid out in the field and how to encode conditional statements based on the value of a variable. in everyday coding, being able to code complex conditional logic is very useful. Another interesting aspect is thinking about the starting condition of a program. Typically any algorithm has a starting condition, a loop and a terminating condition.
 
   - Debugging: Now one may ask why is this task interesting? After all shouldn't we be doing the meat of the problem first? When we actually code up the game we want to know if we did the right thing. Printing things is the only way to know if things are working. This is often done in programming to measure progress and squash bugs.
+
+## Task 2.1
+Now its time to make a move and play the game!
+
+###  What coding skills are needed for this task
+Same as task 2
+
+### The task
+In this task you will complete the `move` function in `minesweeper.js`. You will use the function `openSquare` and `blowMine` depending on what the player selected. The complete signature of the functions is: `openSquare(board, row, column)` and `blowMine(board, row, column)`
+Again you will have to write the conditional statements and place those two statements at the appropriate location. It might help to think what are
+valid moves and what happens when a player opens a square. You don't have to worry about logic for the case where the player clicks on the location
+where there is no mine.
