@@ -51,6 +51,72 @@ function boardAsString(board) {
   return boardStr
 }
 
+function shipMarker() {
+  return "*";
+}
+
+function placeAllShips(board, fleet) {
+    //NOTE: This is the code that the students must complete.
+    //for(var ship_i = 0; ship_i < fleet.length; ship_i++) {
+    //  placeShip(board, fleet[ship_i][0], fleet[ship_i][1])
+    //}
+}
+
+function placeShip(board, start, end) {
+    /*
+     Given a board and the start and end position of a ship place it on the board.
+
+     The function changes the board and does not return anything.
+     Example with an empty board and start = B2 and end = F2 the board would like:
+
+         1 2 3 4 5 6 7 8 9 10
+        ---------------------
+      A| E E E E E E E E E E
+      B| E * E E E E E E E E
+      C| E * E E E E E E E E
+      D| E * E E E E E E E E
+      E| E * E E E E E E E E
+      F| E * E E E E E E E E
+      G| E E E E E E E E E E
+      H| E E E E E E E E E E
+      I| E E E E E E E E E E
+      J| E E E E E E E E E E
+    */
+    var startCoords = battlegridCoordinatesToXY(start[0], start[1]);
+    var startX = startCoords[0];
+    var startY = startCoords[1];
+    var endCoords = battlegridCoordinatesToXY(end[0], end[1]);
+    var endX = endCoords[0];
+    var endY = endCoords[1];
+    // Mark the ships position.
+    placeMarkerHelper(board, startX, endX, startY, endY, shipMarker());
+}
+
+function placeMarkerHelper(board, startX, endX, startY, endY, marker) {
+    //NOTE: This is the code that the students must complete.
+    // if(startX === endX) {
+    //   for(var y = startY; y <=endY; y++) {
+    //     board[startX][y] = marker
+    //   }
+    // } else if(startY === endY) {
+    //   for(var x = startX; x <=endX; x++) {
+    //     board[x][startY] = marker
+    //   }
+    // }
+}
+
+/***************************************************************/
+/************ Helper functions do not change these**************/
+/***************************************************************/
+function battlegridCoordinatesToXY(row, col) {
+  // Given something like C, 10 this function returns
+  var battleGridColumnLookup = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9};
+  if(battleGridColumnLookup[row] === undefined || col > 10 || col < 1) {
+    throw Error("Battle grid coordinate "+ row+ ":"+col+" is invalid");
+  }
+  return [battleGridColumnLookup[row], col -1];
+}
+
 /*------------ DO NOT CHANGE THE CODE BELOW -------------------*/
 function testPrintBoard() {
   // A smaller board that the 10*10 battleship game, just to prove that the
@@ -73,3 +139,129 @@ function testGenerateEmptyBoard() {
 }
 testPrintBoard()
 testGenerateEmptyBoard()
+
+/* Place ship test functions */
+function testPlaceBattleshipRow() {
+  // Given a board place a battleship on it
+  var board = generateEmptyBoard();
+  var expectedBoard = generateEmptyBoard();
+  for(var i = 2; i <= 5; i ++) {
+    expectedBoard[1][i] = shipMarker()
+  }
+  placeShip(board, 'B3', 'B6');
+  assertBoardEquals(board, expectedBoard);
+  console.log(".")
+
+  //console.log(boardAsString(expectedBoard));
+  //console.log(boardAsString(board));
+}
+
+function testPlaceCarrierCol() {
+  // Given a board place a Carrier and verify the board state.
+  var board = generateEmptyBoard();
+  var expectedBoard = generateEmptyBoard();
+  for(var i = 2; i <= 6; i ++) {
+    expectedBoard[i][1] = shipMarker()
+  }
+  placeShip(board, 'C2', 'G2');
+  assertBoardEquals(board, expectedBoard);
+  console.log("..")
+
+  //console.log(boardAsString(expectedBoard));
+  //console.log(boardAsString(board));
+}
+
+
+function testPlaceDestroyerEdge() {
+  // Place a destroyer at the top edge A3:A4
+  var board = generateEmptyBoard();
+  var expectedBoard = generateEmptyBoard();
+  for(var i = 2; i <= 3; i ++) {
+    expectedBoard[0][i] = shipMarker();
+  }
+  placeShip(board, 'A3', 'A4');
+  assertBoardEquals(board, expectedBoard);
+  console.log("...")
+}
+
+function testPlaceSubmarineEdge() {
+  // place a submarine in on the left edge C1:E1
+  var board = generateEmptyBoard();
+  var expectedBoard = generateEmptyBoard();
+  for(var i = 2; i <= 4; i ++) {
+    expectedBoard[i][0] = shipMarker();
+  }
+  placeShip(board, 'C1','E1');
+  assertBoardEquals(board, expectedBoard);
+  console.log("....")
+}
+
+function assertBoardEquals(b1, b2) {
+  var b1Str = boardAsString(b1);
+  var b2Str = boardAsString(b2);
+  if(b1.length !== b2.length || b1[0].length !== b2[0].length) {
+    throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
+  }
+  for(var i = 0; i < b1.length; i++) {
+    for(var j = 0; j< b1[i].length; j++) {
+      if (b1[i][j] !== b2[i][j]) {
+        throw Error("Boards are not the same:\n"+ b1Str+"\n"+b2Str)
+      }
+    }
+  }
+}
+
+
+testPlaceBattleshipRow()
+testPlaceCarrierCol()
+testPlaceDestroyerEdge()
+testPlaceSubmarineEdge()
+
+function testPlaceAllShips() {
+  /*
+       1 2 3 4 5 6 7 8 9 10
+      ---------------------
+    A| E E E E E E E E E E
+    B| E * E E E E * * * E
+    C| E * E E E E E E E E
+    D| E * E E E E * E E E
+    E| E * E E E E * E E E
+    F| E * E E * E E E E E
+    G| E E E E * E E E E E
+    H| E E E E * E E * E E
+    I| E E E E * E E * E E
+    J| E E E E E E E * E E
+    ```
+    Carrier: B2:F2
+    Battleship: F5:I5
+    Cruiser: H8:J8
+    Submarine: B7:B9
+    Destroyer: D7:E7
+  */
+  var board = generateEmptyBoard();
+  var expectedBoard =[
+     //1    2    3    4    5    6    7    8   9     10
+     ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'], //A
+     ['E', '*', 'E', 'E', 'E', 'E', '*', '*', '*', 'E'], //B
+     ['E', '*', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'], //C
+     ['E', '*', 'E', 'E', 'E', 'E', '*', 'E', 'E', 'E'], //D
+     ['E', '*', 'E', 'E', 'E', 'E', '*', 'E', 'E', 'E'], //E
+     ['E', '*', 'E', 'E', '*', 'E', 'E', 'E', 'E', 'E'], //F
+     ['E', 'E', 'E', 'E', '*', 'E', 'E', 'E', 'E', 'E'], //G
+     ['E', 'E', 'E', 'E', '*', 'E', 'E', '*', 'E', 'E'], //H
+     ['E', 'E', 'E', 'E', '*', 'E', 'E', '*', 'E', 'E'], //I
+     ['E', 'E', 'E', 'E', 'E', 'E', 'E', '*', 'E', 'E']] //J
+
+  var fleet = [
+    ['B2', 'F2'], // Carrier
+    ['F5', 'I5'], // Battleship
+    ['H8', 'J8'], // Cruiser
+    ['B7', 'B9'], // Submarine
+    ['D7', 'E7'] // Destroyer
+  ]
+  placeAllShips(board, fleet);
+  assertBoardEquals(board, expectedBoard);
+  console.log(".....")
+}
+
+testPlaceAllShips()

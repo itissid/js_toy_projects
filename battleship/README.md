@@ -1,4 +1,4 @@
-# Setup
+# Battleship
 This directory contains code and this README for the game of battleship. You will be working on the file `battleship.js` for most of this task.
 Battle ship is typically a 2 player board game where your objective is to sink all the enemy ships.[Here](https://www.thesprucecrafts.com/the-basic-rules-of-battleship-411069) are the rules to the game. You can play and familiarize your self with the game [here](http://www.battleshiponline.org/) or [here](http://en.battleship-game.org/).
 . The instructor needs an environment where students can run and debug javascript code. DO NOT DISTRIBUTE THIS README TO STUDENTS AS IT CONTAINS SPOILERS. For this task you will need to focus on the file `battleship.js` in the `battleship/` directory in the root of this repo. This README is a guide on how to use this task to help students get familiar with some code in javascript. Note that one can easily copy paste the code in `battleship.js` into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
@@ -44,3 +44,70 @@ The student's task is to figure out how to complete a function, `boardAsString` 
   - Thinking iteratively: As the user moves how does the state of the board evolve in the memory of the program? The students should get into the habit of drawing pictures to understand the state of a program.
 
   - Debugging: Now one may ask why is this task interesting? After all shouldn't we be doing the meat of the problem first? When we actually code up the game we want to know if we did the right thing. Printing things is the only way to know if things are working. This is often done in programming to measure progress and squash bugs.
+
+
+## Task 2
+Now its time to place your ships on the board.
+
+### Description
+Select the coordinates for each ship from the empty 10*10 grid:
+
+```
+   1 2 3 4 5 6 7 8 9 10
+  ---------------------
+A| E E E E E E E E E E
+B| E E E E E E E E E E
+C| E E E E E E E E E E
+D| E E E E E E E E E E
+E| E E E E E E E E E E
+F| E E E E E E E E E E
+G| E E E E E E E E E E
+H| E E E E E E E E E E
+I| E E E E E E E E E E
+J| E E E E E E E E E E
+```
+
+For example I can place my ships like so:
+
+```
+   1 2 3 4 5 6 7 8 9 10
+  ---------------------
+A| E E E E E E E E E E
+B| E * E E E E * * * E
+C| E * E E E E E E E E
+D| E * E E E E * E E E
+E| E * E E E E * E E E
+F| E * E E * E E E E E
+G| E E E E * E E E E E
+H| E E E E * E E * E E
+I| E E E E * E E * E E
+J| E E E E E E E * E E
+```
+Carrier: B2:F2
+Battleship: F5:I5
+Cruiser: H8:J8
+Submarine: B7:B9
+Destroyer: D7:E7
+
+### Prerequisites
+- Task 1 prerequisites
+
+#### What coding skills are needed for this task
+- Basics of javascript like variables, expressions, types and arrays.
+- `for` loops
+- Basic understanding of conditional logic. This task is going to test this part specifically.
+
+### The task
+The student's task is to figure out how to complete a function, `placeShipHelper` that places one ship and then `placeAllShips` on a board as explained in the task description. `placeShip` takes 3 arguments, an empty `board` and the `start` and `end` position of each ship and changes the board. An example of this is in the last task.
+- Make sure the students understand the board representation mentioned in the [prerequisite](#Get-familiar-with-the-game) section.
+- A bit of knowledge of function return values is useful to understand the program but not necessary for this task's objectives.
+- There is test code in `battleship.js` that should run without any errors once you complete the above functions.
+
+### Outcomes:
+  - Problem Solving: How does one use the the `start` and `end` coordinates to manipulate the board and place a ship? When placing all the ships how do we index the fleet of ships we pass in to call `placeShip` correctly?. The answer to these questions translates to code, which is dependent on the fact that everything is an array and so the implementation also depends on the students understanding on how arrays are indexed and manipulated.
+
+  - Thinking iteratively: As the user moves how does the state of the board evolve in the memory of the program? The students should get into the habit of drawing pictures to understand the state of a program as it progresses.
+
+A Thought Experiment: What happens if we place ships whose positions overlap? How might we change/add to the code to take care of this situation?
+
+In the next task you will learn how to make a move on the board and then play with another player.
