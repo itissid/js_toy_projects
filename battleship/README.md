@@ -18,10 +18,12 @@ For this task you will complete 2 functions `generateEmptyBoard` and `boardAsStr
 - Familiarity with the game rules.
 - How should ships be laid out to gain maximum advantage?
 - The students should understand what is the initial state of the fleet and how it changes. Drawing a smaller `5*5` board with different states drawn on the white/black board can help the student understand how evolution of states would work.
-- Next, the most important question that should get the creative juices of the students to flow: How one can represent a board in computer memory? Its an array of arrays or a matrix (if the students are familiar with those from math) What will the array contain initially? What will the array contain when we make a move? This is the easiest to use structure.
+
+Next, the most important question linking the game board to software
+-  How one can represent a board in computer memory? Its an array of arrays or a matrix (if the students are familiar with those from math) What will the array contain initially? What will the array contain when we make a move? This is the easiest to use structure.
 
 #### What coding skills are needed for this task
-- What is for loop: Initial condition, step and stopping criteria?
+- What is for loop, the Initial condition, step and stopping criteria?
   - Why are loops useful? Because we often need to take steps of from number X to Y which is useful for indexing. Because we often want to do somethings repeatedly like when placing a ship on a row/column.
 	- How to use a variable in a loop to iterate through an array?
 	- What is a loop body?
@@ -39,11 +41,12 @@ The student's task is to figure out how to complete a function, `boardAsString` 
 - A bit of knowledge of function return values is useful to understand the program but not necessary for this task's objectives.
 
 ### Outcomes:
-  - Problem Solving: The Student can think about how the the sea/board can be represented by an array or arrays. This is a useful skill in problem solving in CS: being able to convert objects in the real world to objects in computer memory.
+  - Problem Solving. The objective is to teach students how to *translate* real world *actions* and *objects* in software *code and logic*.  
+    - The Student can think about how the the sea/board can be represented by an array or arrays. This is a useful skill in problem solving in CS: being able to convert objects in the real world to objects in computer memory.
 
   - Thinking iteratively: As the user moves how does the state of the board evolve in the memory of the program? The students should get into the habit of drawing pictures to understand the state of a program.
 
-  - Debugging: Now one may ask why is this task interesting? After all shouldn't we be doing the meat of the problem first? When we actually code up the game we want to know if we did the right thing. Printing things is the only way to know if things are working. This is often done in programming to measure progress and squash bugs.
+  - Debugging: Now one may ask why is this task interesting? After all shouldn't we be doing the meat of the problem first? When we actually code up the game we want to know that the existing code functions correctly. Building incrementally is very important to building software. Printing things is the only way to know if things are working. This is often done in programming to measure progress and squash bugs.
 
 
 ## Task 2
@@ -90,24 +93,30 @@ Submarine: B7:B9
 Destroyer: D7:E7
 
 ### Prerequisites
-- Task 1 prerequisites
+- Make sure the students understand the board representation mentioned in the [prerequisite](#Get-familiar-with-the-game) section.
+- Task 1 must be completed before this.
+- How can grid coordinates be translated to array indexes. This little mental exercise is useful for students to think about how to translate real world objects into
+data that the computer can understand.
+- A bit of knowledge of function return values is useful to understand the program but not necessary for this task's objectives.
 
 #### What coding skills are needed for this task
 - Basics of javascript like variables, expressions, types and arrays.
 - `for` loops
-- Basic understanding of conditional logic. This task is going to test this part specifically.
+- Basic understanding of conditional logic. This task is going to test this specifically.
 
 ### The task
-The student's task is to figure out how to complete a function, `placeShipHelper` that places one ship and then `placeAllShips` on a board as explained in the task description. `placeShip` takes 3 arguments, an empty `board` and the `start` and `end` position of each ship and changes the board. An example of this is in the last task.
-- Make sure the students understand the board representation mentioned in the [prerequisite](#Get-familiar-with-the-game) section.
-- A bit of knowledge of function return values is useful to understand the program but not necessary for this task's objectives.
-- There is test code in `battleship.js` that should run without any errors once you complete the above functions.
+The student's task is to figure out how to complete a function, `placeShipHelper` that places one ship and then `placeAllShips` on a board as explained in the task description. `placeShip` takes 3 arguments, an empty `board` and the `start` and `end` position of each ship and changes the board. An example of this is in the last task. The `placeAllShips` takes the `board` and `fleet` argument. There is test code in `battleship.js` that should run without any errors once students complete the above functions.
 
 ### Outcomes:
-  - Problem Solving: How does one use the the `start` and `end` coordinates to manipulate the board and place a ship? When placing all the ships how do we index the fleet of ships we pass in to call `placeShip` correctly?. The answer to these questions translates to code, which is dependent on the fact that everything is an array and so the implementation also depends on the students understanding on how arrays are indexed and manipulated.
+  - Problem Solving. The objective is to teach students how to *translate* real world *actions* and *objects* in software *code and logic*.  
+    - How does one use the the `start` and `end` coordinates to manipulate the board and place a ship on it?
+    - When placing all the ships using `placeAllShips`, how do we specify the fleet argument? And how do we index the fleet of ships when `placeAllShips` calls `placeShip`?. The answer to these questions translates to code, which is dependent on the fact that most objects are arrays and so the implementation also depends on the students understanding on how arrays are indexed and manipulated to produce real world code.
 
-  - Thinking iteratively: As the user moves how does the state of the board evolve in the memory of the program? The students should get into the habit of drawing pictures to understand the state of a program as it progresses.
+  - Thinking iteratively: As the user places ships does the state of the board evolve in the memory of the program? One idea is to draw the state of the board on paper and then translate that to code, especially if you are stuck. Another idea is to make a table with columns being the variable names and rows being the iterations and fill out this table for specific values.
 
 A Thought Experiment: What happens if we place ships whose positions overlap? How might we change/add to the code to take care of this situation?
 
-In the next task you will learn how to make a move on the board and then play with another player.
+In the next task you will learn how to make a move on the board and finally a function to play with a opponent.
+
+## Task 3
+TBD: A function that takes a grid coordinate and returns a true/false indicating a hit.
