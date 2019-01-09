@@ -95,7 +95,7 @@ function move(board, row, column) {
 }
 
 /****************************************************************************************/
-/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING YOUR CODE ABOVE ***********/
+/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING YOUR CODE TASKS ABOVE ***********/
 /****************************************************************************************/
 
 /**********Helper functions*************/

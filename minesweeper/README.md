@@ -57,8 +57,8 @@ To implement this you need to understand
 - Basic understanding of conditional logic. This task is going to test this part specifically.
 
 ### The task
-In this task students need to code up conditional logic that can generate a board. Again you will be working with `minesweeper.js` and  completing code for the function `generateRandomBoardTest`.
-Once completed there is a test function that prints this board that the student/instructor can run. This string is then automatically printed on the console.
+In this task students need to code up conditional logic that can generate a board. Again you will be working with `minesweeper.js` and  completing code for the function `generateRandomBoard`.
+Once completed there is a test function that prints this board that the student/instructor can run. This string is then automatically printed on the console to make sure you got it right.
 - Task 1 is not a prerequisite for this task but understanding the board representation using the array of array data structures is.
 - Students/Instructors can test their function by executing the `generateRandomBoardTest` in the script. Make sure you test with different board sizes to ensure the code is working.
 
