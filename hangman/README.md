@@ -15,7 +15,7 @@ You will be calling functions to play the game
 The entre task is divided into two tasks that you can use to complete the hangman game. At the end of task 2 you should be able to call those functions and play the game on the command line or the debug console of your Code.org app where you write code. Please refer to `hangman/hangman.js` file from here on. For each task copy over the code from this file into Code.org's screen and press Run on the left hand side to execute it:
 ![Code.org execution](codedotorg.png)
 
-In task 3 you complete some test functions to see if what you coded up in task 2 was correct. Writing tests before playing the game is a critical part of writing large amounts of code incrementally.
+In task 2 you complete some test functions to see if what you coded up in task 1 was correct. Writing tests before playing the game is a critical part of writing large amounts of code incrementally.
 
 ## Task 1(part 1):  
 This task is a two part task. The first part is to understand the data structure we will use to represent the state of the game from start to end.
