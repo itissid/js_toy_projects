@@ -6,7 +6,7 @@
 \_)(_/\_/\_/\_)__) \___/\_)(_/\_/\_/\_)__)
 ```
 
-You will be coding up the logic for Hangman game. Make yourself aware of the rules by playing the game [online] first. 
+You will be coding up the logic for Hangman game. Make yourself aware of the rules by playing the game [online] first.
 You will be calling functions to play the game
 1. `start_hangman(word)` starts the game
 2. `guess(letter)` simulates one round of the game and draws the hangman on the console.
@@ -17,7 +17,7 @@ The entre task is divided into two tasks that you can use to complete the hangma
 
 In task 2 you complete some test functions to see if what you coded up in task 1 was correct. Writing tests before playing the game is a critical part of writing large amounts of code incrementally.
 
-## Task 1(part 1):  
+## Task 1(part 1):
 This task is a two part task. The first part is to understand the data structure we will use to represent the state of the game from start to end.
 1. Understand the HANGMAN_INSTANCE `Object` created by calling the `build_new_hangman` from `start_hangman`. Here are the relevant lines copied for context:
 ```
@@ -30,7 +30,7 @@ Its central objective is Encapsulation of the state of the game. All the data *a
 
 > NOTE TO INSTRUCTOR: It's important for the teacher to help the students in explaining why exactly encapsulation in an object is important/useful(and what sitiations it's not). For example in the battleship and minesweeper games the state of the game was limited to the matrix(grid) that represented the field and so an objects akin to `HANGMAN_INSTANCE` were not strictly necessary. When there are a few variables that need to be tracked to deal with a game such as this, then the Object encapsulation becomes convenient.
 
-2. Study the use of `this` keyword in member functions of the `HANGMAN_INSTANCE` to access the data. For example, this snippet is from `hangman.js`. It accesses the `bad_guesses` integer to create a string to display the Hangman: 
+2. Study the use of `this` keyword in member functions of the `HANGMAN_INSTANCE` to access the data. For example, this snippet is from `hangman.js`. It accesses the `bad_guesses` integer to create a string to display the Hangman:
 ```
 if(this.bad_guesses > 0)
     s += hangman_map[this.bad_guesses] + "\n\n";
@@ -43,3 +43,29 @@ NOTE TO INSTRUCTOR: Don't explain the equivalence to classes if the kids are unl
 1. Encapsulation as explained above.
 2. `this` keyword is specific to the area of code created by the code in`{}` brackets by defintion of the Object in the `build_new_hangman` function.
 3. Explaining how Object(Associative Array) lookup hangman's drawings through the `hangman_map` Object using integer keys that range between 1-9. One can have strings as keys as well. The other object we use is the `HANGMAN_INSTANCE` which is same as the `hangman_map` only a bit more versatile.
+
+## Task 1(part 2) Designing the hangman's internal state.
+This is where you write some code! Look at the `COMPLETE ME!` parts and complete them.
+
+NOTE TO INSTRUCTORS: The answer key is in the branch `hangman_task_1_key`
+
+0. `bad_guesses` is a number that helps us draw the hangman properly as defined in Task 0. So this integer becomes part of a data structure.
+1. We need a notion to store the guessed letters, call this variable `guessed_word`. How would you initialize this variable?
+2. Given a `word` and a `guessed_word` write a function that returns true if the word is guessed and false if its not. Complete the function `is_hangman_word_guessed`
+3. Complete the function `is_hangman_hung` that returns true if you were not able to guess the hangman word correctly.
+4. The `word_lookup` field is a dictionary and its code is completed for you for convenience. Given a guess letter it returns the set of indices that correspond to that letter. Use this to update the `bad_guesses` or `guessed_word` variables you defined in (0) and (1) above.
+
+Once these are completed move onto task 2 to write the tests to ensure this code works.
+
+### Prerequisites
+Get familiar with encapsulation and associateive arrays from Task 1, and the use of the  `this` keyword.
+
+### What coding skills are needed for this assignment?
+- How to get items from an Object using a key.
+- Accessing the members of an object from within its member functions using the `this` keyword.
+- Basic knowledge of JS loops, functions, strings.
+
+### Outcomes:
+1. How to define the internal state of the hangman and its representation in the real world(i.e the console).
+2. How to use the `this` variable in various functions to update the state of the hangman properly.
+3. The usefulness of an Associative Array is to lookup values using any variable(not just an integer). This is hard to do using simple arrays as you would likely have to write additional code to lookup keys that are not integers. This ability to lookup values using a key is the critical to its usefulness and success in programming.
