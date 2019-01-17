@@ -6,18 +6,24 @@
 \_)(_/\_/\_/\_)__) \___/\_)(_/\_/\_/\_)__)
 ```
 
-You will be coding up the logic for Hangman game. Make yourself aware of the rules by playing the game [online] first. 
-You will be calling functions to play the game
+You will be coding up the logic for Hangman game. Make yourself aware of the rules by playing the game [online](https://hangmanwordgame.com/) first. Please look at the `hangman/hangman.js` source file from here on for references to code snippets. You will be using the following functions to play the game:
 1. `start_hangman(word)` starts the game
 2. `guess(letter)` simulates one round of the game and draws the hangman on the console.
 3. `reset_hangman()` forcefully resets the game should you want to start it again midway.
 
-The entre task is divided into two tasks that you can use to complete the hangman game. At the end of task 2 you should be able to call those functions and play the game on the command line or the debug console of your Code.org app where you write code. Please refer to `hangman/hangman.js` file from here on. For each task copy over the code from this file into Code.org's screen and press Run on the left hand side to execute it:
+
+The entre coding task is divided into two parts that you can use to complete the hangman game. At the end of task 2 you should be able to call those functions and play the game on the command line or the debug console of your Code.org app where you write code.
+
+Here is how you will ultimately be able to play the game:
+
+![gameplay](hangman_large.gif)
+
+For each task copy over the code from this file into Code.org's screen and press Run on the left hand side to execute it:
 ![Code.org execution](codedotorg.png)
 
-In task 2 you complete some test functions to see if what you coded up in task 1 was correct. Writing tests before playing the game is a critical part of writing large amounts of code incrementally.
+In task 2 you complete some test functions to see if what you coded up in task 1 was correct. Writing tests before playing the game is a critical skill in writing large amounts of code incrementally.
 
-## Task 1(part 1):  
+## Task 1(part 1): Understanding Encapsulation
 This task is a two part task. The first part is to understand the data structure we will use to represent the state of the game from start to end.
 1. Understand the HANGMAN_INSTANCE `Object` created by calling the `build_new_hangman` from `start_hangman`. Here are the relevant lines copied for context:
 ```
