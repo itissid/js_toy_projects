@@ -75,16 +75,21 @@ function build_new_hangman(word) {
     return({
         "word": word,
         "word_lookup": build_hangman_word_map(word),
-        "guessed_word": null,// COMPLETE ME with an appropriate value type.
-        "bad_guesses": null,//COMPLETE ME with an appropriate value type.
+        "guessed_word": new Array(word.length), 
+        "bad_guesses": 0,
         "is_hangman_word_guessed": function() {
-            // COMPLETE ME
+            for(var i = 0; i < HANGMAN_INSTANCE.guessed_word.length; i++) {
+              if(HANGMAN_INSTANCE.guessed_word[i] !== HANGMAN_INSTANCE.word[i]) {
+                  return false
+              }
+            }
+            return true;
         },
         "is_hangman_hung": function () {
-            // COMPLETE ME
+            return this.bad_guesses === 9;
         },
         "is_game_complete": function () {
-            // COMPLETE ME
+            return (this.is_hangman_hung() || this.is_hangman_word_guessed());
         },
 
         "update_hangman": function(letter) {
@@ -95,11 +100,16 @@ function build_new_hangman(word) {
             var idxs = this.word_lookup[letter] ;
             // Logic for processing a bad guess.
             if(idxs === undefined) {
-              // COMPLETE ME: Update the appropriate variable that accounts for bad guess. Don't forget to call the draw_hangman() function before the return statement
+              this.bad_guesses += 1;
+              this.draw_hangman();
               return;
             }
             // Logic for processing a good guess.
             // COMPLETE ME: Update the appropriate variable that accounts for bad guesses. Don't forget to call the draw_hangman() function at the end.
+            for(var i = 0; i < idxs.length; i++) {
+               this.guessed_word[idxs[i]] = letter;
+            }
+            this.draw_hangman()
         },
 
         "draw_hangman": function() {
@@ -108,10 +118,9 @@ function build_new_hangman(word) {
             // Use special cases for game end(reset the hangman and set the state as completed)
             console.log(LOGO);
             console.log(this._hangman_str())
-            if(this.is_hangman_hung()) {
+            if(this.is_hangman_hung() === true) {
                 console.log("Game Over! You lost!")
-            }
-            if(this.is_hangman_word_guessed()) {
+            } else if(this.is_hangman_word_guessed() === true) {
                 console.log("Game Over! You guessed the word!")
             }
         },
@@ -150,6 +159,15 @@ function start_hangman(word) {
     HANGMAN_INSTANCE = build_new_hangman(word)
 }
 
+function guess(letter) {
+  // update the hangman.
+    if(HANGMAN_INSTANCE === null) {
+        console.log("Game not started. Call start_hangman() first")
+        return;
+    }
+  HANGMAN_INSTANCE.update_hangman(letter);
+}
+
 function restart_hangman(word) {
     if(word === null || word === "" || word === undefined) {
         console.log("** ERROR: Word cannot be empty/null");
@@ -163,17 +181,116 @@ function reset_hangman() {
 }
 
 /********************************************************************
-TEST FUNCTION
-*********************************************************************/
+TEST FUNCTIONS
+/**************************************************************/
 
 function test_draw_hangman_picture_map() {
     // We "mock" the variables necessary to draw the hangman correctly
     console.log("*** testing drawing of the hangman on the console. Verify me visually")
     start_hangman("foobar");
-    HANGMAN_INSTANCE.guessed_word = [] // Simulate no correct guesses
+    HANGMAN_INSTANCE.guessed_word = new Array("foobar".length) // Simulate no correct guesses
     for(var k in hangman_map) {
         HANGMAN_INSTANCE.bad_guesses = k; // Simulate bad guesses.
-        console.log(HANGMAN_INSTANCE.draw_hangman());
+        HANGMAN_INSTANCE.draw_hangman();
     }
 }
+
+
+function test_hangman_start() {
+    var test_word = "foobar";
+    start_hangman(test_word);
+    assertNeq(HANGMAN_INSTANCE, undefined);
+    assertEq(HANGMAN_INSTANCE.word, test_word);
+    var lookup = HANGMAN_INSTANCE.word_lookup;
+    console.log(lookup);
+    assertArrEq(lookup["f"], [0]);
+    assertArrEq(lookup["o"], [1, 2]);
+    assertArrEq(lookup["b"], [3]);
+    reset_hangman() // reset before the next test. This is hackish. Ideally we want a finalizer to run independent tests
+}
+
+function test_hangman_is_saved() {
+  console.log("** Test test_hangman_is_saved")
+  var word = "foobar";
+  start_hangman(word);
+  guess("o");
+  assertEq(HANGMAN_INSTANCE.bad_guesses, 0);
+  assertEq(HANGMAN_INSTANCE.guessed_word[1], "o")
+  assertEq(HANGMAN_INSTANCE.guessed_word[2] , "o")
+  assertEq(all(HANGMAN_INSTANCE.guessed_word.slice(0,1), undefined), true);
+  assertEq(all(HANGMAN_INSTANCE.guessed_word.slice(3), undefined), true);
+  guess("i");
+  assertEq(HANGMAN_INSTANCE.bad_guesses, 1);
+  assertEq(HANGMAN_INSTANCE.guessed_word[1],  "o")
+  assertEq(HANGMAN_INSTANCE.guessed_word[2],  "o")
+  assertEq(all(HANGMAN_INSTANCE.guessed_word.slice(0,1), undefined), true);
+  assertEq(all(HANGMAN_INSTANCE.guessed_word.slice(3), undefined), true);
+  guess("f");
+  guess("b");
+  guess("a");
+  guess("r");
+  assertEq(HANGMAN_INSTANCE.bad_guesses, 1);
+  assertEq(HANGMAN_INSTANCE.guessed_word.join(""), word);
+  assertEq(HANGMAN_INSTANCE.is_game_complete(), true);
+  reset_hangman() // reset before the next test. This is hackish. Ideally we want a finalizer to run independent tests
+}
+
+function test_hangman_is_hung() {
+  console.log("** Test test_hangman_is_hung")
+  var word = "foobar";
+  start_hangman(word);
+  guess("j");
+  assertEq(HANGMAN_INSTANCE.bad_guesses, 1);
+  assertEq(all(HANGMAN_INSTANCE.guessed_word, undefined), true)
+  for(var i = 0; i < 8; i++){
+    guess("j");
+  }
+  assertEq(HANGMAN_INSTANCE.bad_guesses, 9);
+  assertEq(all(HANGMAN_INSTANCE.guessed_word, undefined), true)
+  assertEq(HANGMAN_INSTANCE.is_game_complete(), true);
+  reset_hangman() // reset before the next test. This is hackish. Ideally we want a finalizer to run independent tests
+}
+
 test_draw_hangman_picture_map()
+test_hangman_start()
+test_hangman_is_saved()
+test_hangman_is_hung()
+
+/************************************************************************
+TEST UTILITY FUNCTIONS(Do not touch these unless you know what you are doing)
+*************************************************************************/
+
+function all(arr, val) {
+    for(var i = 0; i< arr.length; i++){
+      if(arr[i] !== val) {
+        return false
+      }
+    }
+    return true;
+}
+
+function assertEq(a, b) {
+    if(a !== b) {
+        throw Error(a+"!="+b)
+    }
+}
+
+function assertNeq(a, b) {
+    if(a === b) {
+        throw Error(a+"==="+b)
+    }
+}
+
+function assertArrEq(a,b) {
+    if(a === undefined || a === null || b===undefined || b === null){
+      throw Error(a+" != "+b)
+    }
+    if(a.length !== b.length) {
+        throw Error(a+" != "+b)
+    }
+    for(var i = 0; i < a.length; i++) {
+        if(a[i] != b[i]) {
+            throw Error(a+" != "+b)
+        }
+    }
+}
