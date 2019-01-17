@@ -95,6 +95,7 @@ function build_new_hangman(word) {
         "update_hangman": function(letter) {
             // Once you have guessed a letter you should call this function. It will update the hangman game.
             if(this.is_game_complete()) {
+                  console.log("Game is completed. Start a new one by calling start_hangman(...)")
                   return;
             }
             var idxs = this.word_lookup[letter] ;
@@ -156,6 +157,7 @@ function start_hangman(word) {
         console.log("** ERROR: Cannot start a new game while one is already started. Use reset_hangman to reset the game forcefully.");
         return;
     }
+    console.log(LOGO);
     HANGMAN_INSTANCE = build_new_hangman(word)
 }
 
@@ -165,7 +167,7 @@ function guess(letter) {
         console.log("Game not started. Call start_hangman() first")
         return;
     }
-  HANGMAN_INSTANCE.update_hangman(letter);
+    HANGMAN_INSTANCE.update_hangman(letter);
 }
 
 function restart_hangman(word) {
