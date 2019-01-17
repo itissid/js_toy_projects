@@ -43,3 +43,38 @@ NOTE TO INSTRUCTOR: Don't explain the equivalence to classes if the kids are unl
 1. Encapsulation as explained above.
 2. `this` keyword is specific to the area of code created by the code in`{}` brackets by defintion of the Object in the `build_new_hangman` function.
 3. Explaining how Object(Associative Array) lookup hangman's drawings through the `hangman_map` Object using integer keys that range between 1-9. One can have strings as keys as well. The other object we use is the `HANGMAN_INSTANCE` which is same as the `hangman_map` only a bit more versatile.
+
+## Task 2: Testing the code
+You have successfully written a chock full of code. Now write test cases for hangman to verify the code in task 1 actually works. You will be provided partial code for 3 test cases to complete along with helper functions `assertEq`, `assertNeq` to use to complete them.
+
+Question yourself what you can and should test? One should test the internal state of the object.
+
+NOTE TO INSTRUCTOR: Explain to the students a bit in detail what things the assertions should be testing.
+
+### Test Case 0: Start the game
+Complete a function that tests the logic that starts the game. For this task you will be completing the function `test_hangman_start`. 
+
+1. Start by calling `start_hangman(..)` with the word argument "foobar".
+2. Next look at the first sample assertion. It states that the HANGMAN_INSTANCE is not in an undefined state.
+3. Now write some assertions on the `HANGMAN_INSTANCE` instance members. Think what should your queries be.
+
+### Test Case 1: Hang the man!
+Complete a function that tests logic where the man is hung!
+For this task you will complete the function `test_hangman_is_hung`
+
+1. Start by calling `start_hangman(..)` with the word argument "foobar".
+2. Next call `guess(..)` with several letters not in the set of letters in "foobar".
+3. Use the `assertEq` and `assertNeq` functions to assert the state of the hangman.
+
+### Test Case 2: Save the man!
+Complete a function that tests logic where you guess the word successfully and the man is saved!
+For this task you will complete the function `test_hangman_is_saved`
+1. Start by calling `start_hangman(..)` with the word argument "foobar".
+2. Next call `guess(..)` with several letters in "foobar".
+3. Use the `assertEq` and `assertNeq` functions to assert the state of the hangman after the game is won.
+
+### Prerequisites
+Task 1 must be completed before this.
+Understand the assertEq, assertArrEq and assertNeq functions.
+Understand what assertions you can make to verify the thing you are testing.
+
