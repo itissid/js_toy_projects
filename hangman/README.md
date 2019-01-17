@@ -6,16 +6,17 @@
 \_)(_/\_/\_/\_)__) \___/\_)(_/\_/\_/\_)__)
 ```
 
-You will be coding up the logic for Hangman game. Make yourself aware of the rules by playing the game [online] first. 
-You will be calling functions to play the game
+You will be coding up the logic for Hangman game. Make yourself aware of the rules by playing the game [online](https://hangmanwordgame.com/?fca=1&success=0#/) first. Please refer to `hangman/hangman.js` file from here on for code snippets. You will be calling the following functions to play the game:
 1. `start_hangman(word)` starts the game
 2. `guess(letter)` simulates one round of the game and draws the hangman on the console.
 3. `reset_hangman()` forcefully resets the game should you want to start it again midway.
 
-The entre task is divided into two tasks that you can use to complete the hangman game. At the end of task 2 you should be able to call those functions and play the game on the command line or the debug console of your Code.org app where you write code. Please refer to `hangman/hangman.js` file from here on. For each task copy over the code from this file into Code.org's screen and press Run on the left hand side to execute it:
+These functions are already completed in the code and you do not need to change them. But they don't work and your mission is to complete bits of code to make it work.
+
+The entre task is divided into two tasks that you need to work on to complete the code of the game. At the end of task 2 you should be able to call those functions and play the game on the command line or the debug console of your Code.org app where you write code. For each task copy over the code from the `hangman.js` file into Code.org's screen and press Run on the left hand side to execute it. Here is how it looks:
 ![Code.org execution](codedotorg.png)
 
-In task 3 you complete some test functions to see if what you coded up in task 2 was correct. Writing tests before playing the game is a critical part of writing large amounts of code incrementally.
+In task 2 you complete some test functions to see if what you coded up in task 1 was correct. Writing such tests before playing the game is a critical part of writing large amounts of code incrementally.
 
 ## Task 1(part 1):  
 This task is a two part task. The first part is to understand the data structure we will use to represent the state of the game from start to end.
