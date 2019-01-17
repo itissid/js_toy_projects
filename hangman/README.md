@@ -32,11 +32,11 @@ function start_hangman(word) {
     HANGMAN_INSTANCE = build_new_hangman(word)
 }
 ```
-Its central objective is Encapsulation of the state of the game. All the data *and* the functions belonging to hangman can be put into this object. It is responsible for tracking each guess and the drawing of the hangman on teh screen based on the member variables(i.e. the data) of this object. Open the file and look at the `build_new_hangman` function's returned Object.
+Its central objective of using Object is Encapsulation of the state of the game. All the data *and* the functions belonging to hangman can be put into this object. It is responsible for tracking each guess and the drawing of the hangman on the screen based on the member data(which is updated with all your guesses) of this object. For the relavent code open the file and look at the `build_new_hangman` function's return statement.
 
-> NOTE TO INSTRUCTOR: It's important for the teacher to help the students in explaining why exactly encapsulation in an object is important/useful(and what sitiations it's not). For example in the battleship and minesweeper games the state of the game was limited to the matrix(grid) that represented the field and so an objects akin to `HANGMAN_INSTANCE` were not strictly necessary. When there are a few variables that need to be tracked to deal with a game such as this, then the Object encapsulation becomes convenient.
+> NOTE TO INSTRUCTOR: It's important for the teacher to help the students in explaining why exactly encapsulation in an object is important/useful(and what sitiations it's not). For example in the battleship and minesweeper games the state of the game was limited to the matrix(grid) that represented the field and so an Object akin to `HANGMAN_INSTANCE` was not strictly necessary; we could pass the grid around directly. When there are more than a handful of variables that need to be tracked to deal with a game such as this, then the Object encapsulation becomes convenient and efficient to use.
 
-2. Study the use of `this` keyword in member functions of the `HANGMAN_INSTANCE` to access the data. For example, this snippet is from `hangman.js`. It accesses the `bad_guesses` integer to create a string to display the Hangman: 
+2. Study the use of `this` keyword in member functions of the `HANGMAN_INSTANCE` to access the data. For example, the following snippet is from `hangman.js` accesses the `bad_guesses` integer to create a string to display the Hangman: 
 ```
 if(this.bad_guesses > 0)
     s += hangman_map[this.bad_guesses] + "\n\n";
