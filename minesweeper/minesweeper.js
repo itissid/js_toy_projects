@@ -57,7 +57,7 @@ function boardAsString(board) {
   return boardStr;
 }
 /*--------------------------------------------------------------*/
-function generateRandomBoard(rows, columns, mineConcentration=40) {
+function generateRandomBoard(rows, columns, mineConcentration) {
   /*
   rows: How many rows do you want in the board
   columns: How many columns you want in the board
@@ -76,7 +76,11 @@ function generateRandomBoard(rows, columns, mineConcentration=40) {
   for(var row = 0; row < rows; row++) {
     for(var col = 0; col < columns; col++) {
         var shouldPlaceMine = placeMine(mineConcentration)
-        /*Complete the conditional logic here to place a mine on the board*/
+        if(shouldPlaceMine == true) {
+            board[row][col] = 'M';
+        } else {
+            board[row][col] = 'E';
+        }
     }
   }
   return board;
@@ -84,6 +88,7 @@ function generateRandomBoard(rows, columns, mineConcentration=40) {
 
 function move(board, row, column) {
   /*
+   * This is the main function that should be called to play the game
   * board: This is the mine sweeper board at any stage of the game, it may have open or closed squares.
   * row: the row number where the user clicked on the board.
   * column: the column number where the user clicked on the board.
@@ -92,10 +97,16 @@ function move(board, row, column) {
   * You will have to write the conditional statements and place those two statements at the appropriate location.
   *
   */
+    if(board[row][column] === 'E') {
+       openSquare(board, row, column)
+    } else if (board[row][column] ==E 'M') {
+        board[row][column] = 'X'
+    }
+    console.log(boardAsString(board))
 }
 
 /****************************************************************************************/
-/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING YOUR CODE TASKS ABOVE ***********/
+/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING The CODE TASKS ABOVE ******/
 /****************************************************************************************/
 
 /**********Helper functions*************/
@@ -109,7 +120,38 @@ function placeMine(mineConcentration) {
   return Math.random() < (mineConcentration/100);
 }
 
-function openSquare(board, row, column, visited = {}) {
+function blowMine(board, row, column) {
+    // Blow up all the mines ending the game and revealing all the mine positions.
+    if(board[row][column] != 'M') {
+        throw Error("Bad call to blow mine at location (" + row + ", "+ column + ") where no mine was present");
+    }
+    board[row][column] = 'X'
+    for(var i = 0; i < board.length; i++) {
+        for(var j = 0; j < board[i].length; j++) {
+            if(board[i][j] === 'M') {
+                board[i][j] = 'X'
+            }
+        }
+    }
+}
+
+function openSquare(board, row, column) {
+    openSquareHelper(board, row, column, {})
+}
+
+function openSquareHelper(board, row, column, visited) {
+  /**
+   * This function is actually a fun way to teach recursion(It is actually a case of depth first search). The best way of teaching it is to
+   * walk the kids through a game. The instruction should go something like this.
+   * 1. Open the graphical minesweeper game
+   *    1.1. Open a square.
+   * 2. Now walk the students write a pseudocode/algorithm on how those squares are opened:
+   *    If neighboring squares don't have mines
+   *     - Open the square in question.
+   *     - Add all the neighboring squares to a list of neighbors to be recursed on.
+   *    If any neighboring square has a mine then mark the square in question with a number and do not recurse on the neighbour.
+   * 3. To avoid repeated visitation of squares we keep a `visited` dictionary. When exploring the neighbors of a specific square we never add squares to the list that are visited.
+   */
   var neighbourOffsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [1, 1], [-1, -1], [-1, 1], [1, -1]];
   var neighbors = [];
   visited[[row, column]] = true;
@@ -132,8 +174,9 @@ function openSquare(board, row, column, visited = {}) {
   if(numMines > 0) {
       board[row][column] = numMines;
   } else {
+    board[row][column] = 'O' // Declare the square open
     for(var i = 0; i < neighbors.length; i++) {
-        openSquare(board, neighbors[i][0], neighbors[i][1], visited);
+        openSquareHelper(board, neighbors[i][0], neighbors[i][1], visited);
     }
   }
 }
@@ -179,7 +222,7 @@ function generateEmptyBoard(rows, cols) {
 function generateRandomBoardTest() {
     var rows = 10
     var cols = 10
-    var board = generateRandomBoard(rows, cols)
+    var board = generateRandomBoard(rows, cols, 40)
     console.log(boardAsString(board))
 }
 
@@ -193,7 +236,7 @@ function testOpen() {
     ['E', 'E', 'M', 'E', 'E'],
     ['M', 'M', 'E', 'E', 'M'],
     ['M', 'E', 'E', 'E', 'M']]
-  openSquareRecursively(board, 0, 2);
+  openSquare(board, 0, 2);
   var expectedBoard = [
     ['M', 'M',  2, 'E', 'E'],
     ['M', 'E', 'M', 'E', 'E'],
@@ -209,7 +252,7 @@ function testOpen() {
     ['E', 'E', 'M', 3,  1],
     ['M', 'M', 'E', 'E', 'M'],
     ['M', 'E', 'E', 'E', 'M']];
-  openSquareRecursively(board, 0, 4);
+  openSquare(board, 0, 4);
   assertBoardEquals(board, expectedBoard);
   console.log(".")
 }
@@ -230,3 +273,4 @@ function assertBoardEquals(b1, b2) {
     }
   }
 }
+
