@@ -3,6 +3,10 @@ This repo contains a game called [minesweeper](http://minesweeperonline.com/) wi
 
 ![alt text](assets/codedotorg_workspace_console.png "Note the debugging console printing things")
 
+Here is the game in action: 
+
+![alt text](assets/opensquare_and_flag_demo.gif "Note the output in the debugging console")
+
 ## Task 1
 Learning to apply indexing of Arrays, String concatenation and Looping in javascript.
 
