@@ -74,11 +74,12 @@ Once completed there is a test function that prints this board that the student/
 
 ## Task 3
 Now its time to make a move! You are provided a number of Canvas functions that will automatically draw the minefield for you and display the move you make.
+
 You will use your mouse and keyboard to interact with the minefield.
- - Clicking while holding the shift key will open a cell:
+ - Clicking while holding the shift key will open a cell and just clicking the minefield will place a flag on the field:
 ![alt text](assets/opensquare_and_flag_demo.gif "Note the output in the debugging console")
- 
- - Clicking the minefield will place a flag on the field:
+
+ - When opening a cell it is quite possible you open a mine and blow it this is how that will look:
 ![alt text](assets/blow_mine_demo.gif "Note the output in the debugging console")
 
 You will complete two functions that will form the logic of the clicks a user
