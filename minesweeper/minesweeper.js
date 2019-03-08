@@ -273,10 +273,18 @@ function blowMine(board, row, column) {
         ['E', 'E', 'X', 'E', 'E'],
         ['X', 'X', 'E', 'E', 'X'],
         ['X', 'E', 'E', 'E', 'X']]
-     */
-     /*
-	TODO: Complete me!
-     */
+    */
+    if(board[row][column] != 'M') {
+        throw Error("Bad call to blow mine at location (" + row + ", "+ column + ") where no mine was present");
+    }
+    board[row][column] = 'X'
+    for(var i = 0; i < board.length; i++) {
+        for(var j = 0; j < board[i].length; j++) {
+            if(board[i][j] === 'M') {
+                board[i][j] = 'X'
+            }
+        }
+    }
 }
 
 function openSquare(board, row, column) {
@@ -307,14 +315,37 @@ function openSquareHelper(board, row, column, visited) {
     visited[[row, column]] = true; // This is how you will use the visited set
     var numMines = 0;
     neighbourOffsets.forEach(function(offset) {
-	/*******TODO: Complete this code *****
-		Remember the idea is to iterate across the neighbors and count the mines or add the neighbor
-		the neighbor array.
-	**************************************/
+	var x = row + offset[0];
+	var y = column + offset[1];
+	if(visited[[x, y]] === undefined) {
+	    if(x >=0 && x < board.length && y >= 0 && y < board[row].length) {
+
+	      if(board[x][y] === 'M') {
+		numMines += 1;
+	      }
+	      //console.log(x, y, board[row][column]);
+	      if(!isNumber(board[x][y]) && board[x][y] !== 'O') // Only consider cells that are not numbers and not open already
+		neighbors.push([x, y]);
+	    }
+	}
+
     });
-    /**
-    TODO: Complete the code that either adds a number to the cell or recurses on the set of neighbors.
-    **/
+
+    if(numMines > 0) {
+        // If we find any mines around the location, then we only place a number in the location
+        if(FLAGGED_BOARD === null || FLAGGED_BOARD[row][column] !== 'F') {// Corner case: if a user places flag in a square where it should not be then the square is left as is.
+            board[row][column] = numMines;
+        } 
+    } else {
+        // If we don't find any mine around this location, then we open this square and each of their neighbors recursively.
+        if(FLAGGED_BOARD === null || FLAGGED_BOARD[row][column] !== 'F') {// Corner case: if a user places flag in a square where it should not be then the square is left as is.
+          board[row][column] = 'O' // Declare the square open
+        } 
+        for(var i = 0; i < neighbors.length; i++) {
+              openSquareHelper(board, neighbors[i][0], neighbors[i][1], visited);
+        }
+    }
+
 }
 
 /****************************************************************************/
