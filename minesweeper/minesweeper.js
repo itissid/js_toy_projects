@@ -197,7 +197,7 @@ function initUIWidgets() {
         var row = eventRowCol[0];
         var col = eventRowCol[1];
         if(event.shiftKey === true) {
-            // The user wants to open the cell, 
+            // The user wants to open the cell,
             if(!canOpenCell(row, col)) {
                 //but he may have clicked somewhere else or in the wrong place like where its already opened or is a number
                 console.log("Disallowed");
@@ -210,12 +210,12 @@ function initUIWidgets() {
                 drawAllMines();
                 return;
             }
-            // We update each cell. We might be more efficient if we only maintained a list of 
-            // cells that were opened or numbered in `openSquareHelper` function instead of the entire board. 
-            repaintEntireCanvas(); 
-            // No mine was blown, just draw the flags, the open 
+            // We update each cell. We might be more efficient if we only maintained a list of
+            // cells that were opened or numbered in `openSquareHelper` function instead of the entire board.
+            repaintEntireCanvas();
+            // No mine was blown, just draw the flags, the open
         } else {
-            updateFlag(row, col); 
+            updateFlag(row, col);
         }
     });
 }
@@ -257,35 +257,26 @@ function placeMine(mineConcentration) {
 }
 
 function blowMine(board, row, column) {
-    // Blow up all the mines ending the game and revealing all the mine positions.
     /**
-     * Here is the state of a board before and after a mine is blown at position (0, 1)
-        board = [
+      Blow up all the mines ending the game and revealing all the mine positions.
+      Here is the state of a board before and after a mine is blown at position (0, 1)
+      board = [
         ['M', 'M', 'E', 'E', 'E'],
         ['M', 'E', 'M', 'E', 'E'],
         ['E', 'E', 'M', 'E', 'E'],
         ['M', 'M', 'E', 'E', 'M'],
         ['M', 'E', 'E', 'E', 'M']]
 
-        board = [
+      board = [
         ['X', 'X', 'E', 'E', 'E'],
         ['X', 'E', 'X', 'E', 'E'],
         ['E', 'E', 'X', 'E', 'E'],
         ['X', 'X', 'E', 'E', 'X'],
         ['X', 'E', 'E', 'E', 'X']]
-
      */
-    if(board[row][column] != 'M') {
-        throw Error("Bad call to blow mine at location (" + row + ", "+ column + ") where no mine was present");
-    }
-    board[row][column] = 'X'
-    for(var i = 0; i < board.length; i++) {
-        for(var j = 0; j < board[i].length; j++) {
-            if(board[i][j] === 'M') {
-                board[i][j] = 'X'
-            }
-        }
-    }
+     /*
+	TODO: Complete me!
+     */
 }
 
 function openSquare(board, row, column) {
@@ -306,50 +297,24 @@ function openSquareHelper(board, row, column, visited) {
    *     - Add all the neighboring squares to a list of neighbors to be recursed on.
    *    If any neighboring square has a mine then mark the square in question
    *    with a number and do not recurse on the neighbour.
-   * 3. To avoid repeated visitation of squares we keep a `visited` dictionary.
+   * 3. To avoid repeated visitation of squares we keep a `visited` set.
    * When exploring the neighbors of a specific square we never add squares to
    * the list that are visited.
    */
     //console.log("Exploring row, col: "+ row+", "+column);
-    var neighbourOffsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [1, 1], [-1, -1], [-1, 1], [1, -1]];
+    var neighbourOffsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [1, 1], [-1, -1], [-1, 1], [1, -1]]; // These are used as offsets to subtract from row, column to generate the set of neighbors.
     var neighbors = [];
-    visited[[row, column]] = true;
+    visited[[row, column]] = true; // This is how you will use the visited set
     var numMines = 0;
     neighbourOffsets.forEach(function(offset) {
-      var x = row + offset[0];
-      var y = column + offset[1];
-      if(visited[[x, y]] === undefined) {
-          if(x >=0 && x < board.length && y >= 0 && y < board[row].length) {
-
-            if(board[x][y] === 'M') {
-              numMines += 1;
-            }
-            //console.log(x, y, board[row][column]);
-            // TODO: Optimization: if the cell has a number oris already open we don't need to add it to the neighbour set.            
-            if(!isNumber(board[x][y]) && board[x][y] !== 'O') // Only consider cells that are not numbers and not open already
-              neighbors.push([x, y]);
-          }
-      }
+	/*******TODO: Complete this code *****
+		Remember the idea is to iterate across the neighbors and count the mines or add the neighbor
+		the neighbor array.
+	**************************************/
     });
-    //console.log(row+" "+column+" "+numMines + "| "+neighbors);
-    if(numMines > 0) {
-        // If we find any mines around the location, then we only place a number in the location
-        if(FLAGGED_BOARD === null || FLAGGED_BOARD[row][column] !== 'F') {// Corner case: if a user places flag in a square where it should not be then the square is left as is.
-            board[row][column] = numMines;
-        } else {
-            console.log("Flag placed here won't place number at: "+row+","+column)
-        }
-    } else {
-        // If we don't find any mine around this location, then we open this square and each of their neighbors recursively.
-        if(FLAGGED_BOARD === null || FLAGGED_BOARD[row][column] !== 'F') {// Corner case: if a user places flag in a square where it should not be then the square is left as is.
-          board[row][column] = 'O' // Declare the square open
-        } else {
-            console.log("Flag placed won't open square: "+row+","+column)
-        }
-        for(var i = 0; i < neighbors.length; i++) {
-              openSquareHelper(board, neighbors[i][0], neighbors[i][1], visited);
-        }
-    }
+    /**
+    TODO: Complete the code that either adds a number to the cell or recurses on the set of neighbors.
+    **/
 }
 
 /****************************************************************************/
@@ -566,7 +531,7 @@ function repaintEntireCanvas() {
                 drawFlag(i, j);
                 continue; // Painted flags take priority, even if that square does not have a mine, a flag put by the user is never overwritten
             }
-            if(GAME_BOARD[i][j] === 'O') { 
+            if(GAME_BOARD[i][j] === 'O') {
                 // paint all open cells with preset colors
                 paintOver(i, j, "lightgrey", "black");
             } else if(isNumber(GAME_BOARD[i][j])) {
