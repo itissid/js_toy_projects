@@ -53,7 +53,6 @@ function boardAsString(board) {
     }
     boardStr = boardStr.trim()+ "\n";
   }
-  // Just return a board string
   return boardStr;
 }
 /*--------------------------------------------------------------*/
@@ -64,13 +63,12 @@ function generateRandomBoard(rows, columns, mineConcentration) {
   mineConcentration: what % of mines do you want in the board(between 1-100)?. Default=40%
 
   This function returns a board given its size rows*columns. Note that the board can
-  contain only Mines or Empty squares and a mineConcentration of 40% by default.
+  contain only Mines(M) or Empty(E) squares and a mineConcentration.
 
   This function uses a function called named `placeMine` which returns True of False
-  based on a "random number generator". What this means is if  mine_concentration is 40
-  then out of 100 cells in a grid approx 40 can be mines.
-  You can just treat the `placeMine` function like a black box that returns True if the program
-  should place a mine. All you have to do is complete the conditional statements.
+  with probability mineConcentration/100. What this means is if mine_concentration is 40
+  then it will return true approximately 40 out of 100 times.
+  You can just treat the `placeMine` function like a black box to place a mine.
   */
   var board = generateEmptyBoard(rows, columns);
   for(var row = 0; row < rows; row++) {
@@ -86,28 +84,6 @@ function generateRandomBoard(rows, columns, mineConcentration) {
   return board;
 }
 
-function move(board, row, column) {
-  /*
-   * This is the main function that should be called to play the game
-  * board: This is the mine sweeper board at any stage of the game, it may have open or closed squares.
-  * row: the row number where the user clicked on the board.
-  * column: the column number where the user clicked on the board.
-  * Use the function `openSquare` and `blowMine` depending on what the player selected.
-  * The complete signature of the functions is: `openSquare(board, row, column)` and `blowMine(board, row, column)`
-  * You will have to write the conditional statements and place those two statements at the appropriate location.
-  *
-  */
-    if(board[row][column] === 'E') {
-       openSquare(board, row, column)
-    } else if (board[row][column] ==E 'M') {
-        board[row][column] = 'X'
-    }
-    console.log(boardAsString(board))
-}
-
-/****************************************************************************************/
-/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING The CODE TASKS ABOVE ******/
-/****************************************************************************************/
 
 /**********Helper functions*************/
 function placeMine(mineConcentration) {
@@ -117,88 +93,15 @@ function placeMine(mineConcentration) {
   if(mineConcentration < 1 || mineConcentration >= 100) {
     throw Error("Mine concentration only between 1 and 100% but was "+mineConcentration);
   }
-  return Math.random() < (mineConcentration/100);
+    return generateMine(mineConcentration/100);
 }
 
-function blowMine(board, row, column) {
-    // Blow up all the mines ending the game and revealing all the mine positions.
-    if(board[row][column] != 'M') {
-        throw Error("Bad call to blow mine at location (" + row + ", "+ column + ") where no mine was present");
-    }
-    board[row][column] = 'X'
-    for(var i = 0; i < board.length; i++) {
-        for(var j = 0; j < board[i].length; j++) {
-            if(board[i][j] === 'M') {
-                board[i][j] = 'X'
-            }
-        }
-    }
+function generateMine(probability) {
+    // Why is it useful to have this function separately that just put the one line into placeMine?
+    // The answer is testability. We replace this function with a dummy one to test generateRandomBoard
+    return Math.random() < probability;
 }
 
-function openSquare(board, row, column) {
-    openSquareHelper(board, row, column, {})
-}
-
-function openSquareHelper(board, row, column, visited) {
-  /**
-   * This function is actually a fun way to teach recursion(It is actually a case of depth first search). The best way of teaching it is to
-   * walk the kids through a game. The instruction should go something like this.
-   * 1. Open the graphical minesweeper game
-   *    1.1. Open a square.
-   * 2. Now walk the students write a pseudocode/algorithm on how those squares are opened:
-   *    If neighboring squares don't have mines
-   *     - Open the square in question.
-   *     - Add all the neighboring squares to a list of neighbors to be recursed on.
-   *    If any neighboring square has a mine then mark the square in question with a number and do not recurse on the neighbour.
-   * 3. To avoid repeated visitation of squares we keep a `visited` dictionary. When exploring the neighbors of a specific square we never add squares to the list that are visited.
-   */
-  var neighbourOffsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [1, 1], [-1, -1], [-1, 1], [1, -1]];
-  var neighbors = [];
-  visited[[row, column]] = true;
-  var numMines = 0;
-  neighbourOffsets.forEach(function(offset) {
-    var x = row + offset[0];
-    var y = column + offset[1];
-    if(visited[[x, y]] === undefined) {
-        if(x >=0 && x < board.length && y >= 0 && y < board[row].length) {
-
-          if(board[x][y] === 'M') {
-            numMines += 1;
-          }
-          //console.log(x, y, board[row][column]);
-          neighbors.push([x, y]);
-        }
-    }
-  });
-  console.log(row+" "+column+" "+numMines + "| "+neighbors);
-  if(numMines > 0) {
-      board[row][column] = numMines;
-  } else {
-    board[row][column] = 'O' // Declare the square open
-    for(var i = 0; i < neighbors.length; i++) {
-        openSquareHelper(board, neighbors[i][0], neighbors[i][1], visited);
-    }
-  }
-}
-
-/*************************************/
-
-function printBoardTest() {
-  var board1 = [
-    ['M', 'M', 'E', 'E', 'E'],
-    ['M', 'E', 'M', 'E', 'E'],
-    ['E', 'E', 'M', 'E', 'E'],
-    ['M', 'M', 'E', 'E', 'M'],
-    ['M', 'E', 'E', 'E', 'M']]
-  var board2 = [
-      ['M', 'M', '2', '1', 'B'],
-      ['M', '5', 'M', '2', 'B'],
-      ['E', 'E', 'M', '3', '1'],
-      ['M', 'M', '2', '3', 'M'],
-      ['M', '3', '1', '2', 'M']]
-  console.log(boardAsString(board1));
-  console.log(boardAsString(board2));
-}
 
 function generateEmptyBoard(rows, cols) {
   if(rows <= 0) {
@@ -217,47 +120,59 @@ function generateEmptyBoard(rows, cols) {
   return board;
 }
 
-//printBoardTest()
 
-function generateRandomBoardTest() {
-    var rows = 10
-    var cols = 10
-    var board = generateRandomBoard(rows, cols, 40)
-    console.log(boardAsString(board))
+/****************************************************************************************/
+/******** DO NOT CHANGE THE CODE BELOW IT IS ONLY FOR TESTING The CODE TASKS ABOVE ******/
+/****************************************************************************************/
+function testBoardToString() {
+    var board1 = [
+        ['M', 'M', 'E', 'E', 'E'],
+        ['M', 'E', 'M', 'E', 'E'],
+        ['E', 'E', 'M', 'E', 'E'],
+        ['M', 'M', 'E', 'E', 'M'],
+        ['M', 'E', 'E', 'E', 'M']]
+    console.log(boardAsString(board1));
+    assertEquals(boardAsString(board1), "M M E E E\nM E M E E\nE E M E E\nM M E E M\nM E E E M\n");
+    console.log(".");
+}
+testBoardToString()
+
+function testGenerateRandomBoard() {
+    var rows = 5
+    var cols = 5
+    var expectedBoard = [['M', 'E', 'E', 'E', 'E'],
+       ['M', 'E', 'E', 'E', 'E'],
+       ['M', 'E', 'E', 'E', 'E'],
+       ['M', 'E', 'E', 'E', 'E'],
+       ['M', 'E', 'E', 'E', 'E']];
+    try {
+      // We replace the generateMine function with a dummy one to test our logic
+      var realMineGenFn = generateMine;
+      var i = 0;
+      generateMine = function(probability) {
+          if(i%5 == 0) {
+              i++;
+              return true;
+          }
+          i++;
+          return false;
+      }
+      var board = generateRandomBoard(rows, cols, 40)
+      assertBoardEquals(board, expectedBoard);
+      console.log("..");
+    } catch(e) {
+      generateMine = realMineGenFn;
+      throw(e);
+    }
 }
 
-//generateRandomBoardTest()
+testGenerateRandomBoard()
 
-
-function testOpen() {
-  var board = [
-    ['M', 'M', 'E', 'E', 'E'],
-    ['M', 'E', 'M', 'E', 'E'],
-    ['E', 'E', 'M', 'E', 'E'],
-    ['M', 'M', 'E', 'E', 'M'],
-    ['M', 'E', 'E', 'E', 'M']]
-  openSquare(board, 0, 2);
-  var expectedBoard = [
-    ['M', 'M',  2, 'E', 'E'],
-    ['M', 'E', 'M', 'E', 'E'],
-    ['E', 'E', 'M', 'E', 'E'],
-    ['M', 'M', 'E', 'E', 'M'],
-    ['M', 'E', 'E', 'E', 'M']];
-  console.log(board);
-  assertBoardEquals(board, expectedBoard);
-  // Next move
-  var expectedBoard = [
-    ['M', 'M',  2,  1, 'E'],
-    ['M', 'E', 'M', 2, 'E'],
-    ['E', 'E', 'M', 3,  1],
-    ['M', 'M', 'E', 'E', 'M'],
-    ['M', 'E', 'E', 'E', 'M']];
-  openSquare(board, 0, 4);
-  assertBoardEquals(board, expectedBoard);
-  console.log(".")
+function assertEquals(x, y) {
+    if(x!==y) {
+        throw Error("x!=y; \nx=\n"+x+"\ny=\n"+y)
+    }
 }
-
-testOpen();
 
 function assertBoardEquals(b1, b2) {
   var b1Str = boardAsString(b1);
@@ -274,3 +189,4 @@ function assertBoardEquals(b1, b2) {
   }
 }
 
+console.log("All tests run successfully");
