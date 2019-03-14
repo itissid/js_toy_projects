@@ -71,16 +71,8 @@ function generateRandomBoard(rows, columns, mineConcentration) {
   You can just treat the `placeMine` function like a black box to place a mine.
   */
   var board = generateEmptyBoard(rows, columns);
-  for(var row = 0; row < rows; row++) {
-    for(var col = 0; col < columns; col++) {
-        var shouldPlaceMine = placeMine(mineConcentration)
-        if(shouldPlaceMine == true) {
-            board[row][col] = 'M';
-        } else {
-            board[row][col] = 'E';
-        }
-    }
-  }
+  // Student code begins here for task 2
+  // Student code ends here for task 2
   return board;
 }
 
