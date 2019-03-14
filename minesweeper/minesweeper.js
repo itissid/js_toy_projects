@@ -98,7 +98,8 @@ function placeMine(mineConcentration) {
 
 function generateMine(probability) {
     // Why is it useful to have this function separately that just put the one line into placeMine?
-    // The answer is testability. We replace this function with a dummy one to test generateRandomBoard
+    // The answer is testability. We replace this function with a dummy one to test generateRandomBoard.
+    // Without replacing this it would be impossible to test generateRandomBoard.
     return Math.random() < probability;
 }
 
