@@ -44,11 +44,11 @@ function boardAsString(board) {
   var boardStr = ""
   for(var row = 0; row < numberOfRows; row++) {
     for(var col = 0; col < numberOfCols; col++) {
-      boardStr += board[row][col] +" "
+      boardStr += board[row][col]+" ";
     }
-    boardStr = boardStr.trim() +"\n"
+    boardStr = boardStr.trim()+ "\n";
   }
-  return boardStr
+  return boardStr;
 }
 
 function shipMarker() {
@@ -57,9 +57,9 @@ function shipMarker() {
 
 function placeAllShips(board, fleet) {
     //NOTE: This is the code that the students must complete.
-    //for(var ship_i = 0; ship_i < fleet.length; ship_i++) {
-    //  placeShip(board, fleet[ship_i][0], fleet[ship_i][1])
-    //}
+    for(var ship_i = 0; ship_i < fleet.length; ship_i++) {
+      placeShip(board, fleet[ship_i][0], fleet[ship_i][1])
+    }
 }
 
 function placeShip(board, start, end) {
@@ -94,15 +94,15 @@ function placeShip(board, start, end) {
 
 function placeMarkerHelper(board, startX, endX, startY, endY, marker) {
     //NOTE: This is the code that the students must complete.
-    // if(startX === endX) {
-    //   for(var y = startY; y <=endY; y++) {
-    //     board[startX][y] = marker
-    //   }
-    // } else if(startY === endY) {
-    //   for(var x = startX; x <=endX; x++) {
-    //     board[x][startY] = marker
-    //   }
-    // }
+    if(startX === endX) {
+      for(var y = startY; y <=endY; y++) {
+        board[startX][y] = marker
+      }
+    } else if(startY === endY) {
+      for(var x = startX; x <=endX; x++) {
+        board[x][startY] = marker
+      }
+    }
 }
 
 /***************************************************************/
@@ -127,7 +127,12 @@ function testPrintBoard() {
     ['E', '*', 'E', 'X', 'E'],
     ['E', '*', 'E', '!', 'E'],
     ['E', 'E', 'E', '*', 'E']]
-  console.log(boardAsString(board));
+  var boardString = "E E E E E\n"+
+    "E * X E E\n" +
+    "E * E X E\n" +
+    "E * E ! E\n" +
+    "E E E * E\n";
+  assertEquals(boardAsString(board), boardString);
 }
 
 function testGenerateEmptyBoard() {
@@ -135,8 +140,20 @@ function testGenerateEmptyBoard() {
     if(emptyBoard.length != 10 && emptyBoard[0].length != 10) {
       throw Error("The empty board is not properly generated")
     }
-    console.log(boardAsString(emptyBoard))
+    var board = [
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E']]
+    assertBoardEquals(board, emptyBoard);
 }
+
 testPrintBoard()
 testGenerateEmptyBoard()
 
@@ -196,22 +213,6 @@ function testPlaceSubmarineEdge() {
   console.log("....")
 }
 
-function assertBoardEquals(b1, b2) {
-  var b1Str = boardAsString(b1);
-  var b2Str = boardAsString(b2);
-  if(b1.length !== b2.length || b1[0].length !== b2[0].length) {
-    throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
-  }
-  for(var i = 0; i < b1.length; i++) {
-    for(var j = 0; j< b1[i].length; j++) {
-      if (b1[i][j] !== b2[i][j]) {
-        throw Error("Boards are not the same:\n"+ b1Str+"\n"+b2Str)
-      }
-    }
-  }
-}
-
-
 testPlaceBattleshipRow()
 testPlaceCarrierCol()
 testPlaceDestroyerEdge()
@@ -265,3 +266,30 @@ function testPlaceAllShips() {
 }
 
 testPlaceAllShips()
+
+function assertEquals(x, y) {
+    if(x!==y) {
+        throw Error("x!=y; \nx=\n"+x+"\ny=\n"+y)
+    }
+}
+
+function assertNotEquals(x1, x2) {
+    if(x1 === x2) {
+        throw Error("x===y; \nx=\n"+x+"\ny=\n"+y)
+    }
+}
+
+function assertBoardEquals(b1, b2) {
+  var b1Str = boardAsString(b1);
+  var b2Str = boardAsString(b2);
+  if(b1.length !== b2.length || b1[0].length !== b2[0].length) {
+    throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
+  }
+  for(var i = 0; i < b1.length; i++) {
+    for(var j = 0; j< b1[i].length; j++) {
+      if (b1[i][j] !== b2[i][j]) {
+        throw Error("Boards are not the same:\n"+ b1Str+"\n"+b2Str)
+      }
+    }
+  }
+}
