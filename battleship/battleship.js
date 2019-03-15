@@ -56,10 +56,12 @@ function shipMarker() {
 }
 
 function placeAllShips(board, fleet) {
-    //NOTE: This is the code that the students must complete.
-    for(var ship_i = 0; ship_i < fleet.length; ship_i++) {
-      placeShip(board, fleet[ship_i][0], fleet[ship_i][1])
-    }
+    /**
+     * Arguments: The 10*10 board and the array fleet contining the ship locations
+     * This code will call placeShip iteratively for each ship in the `fleet`, given the board and fleet arguments
+    */
+    // Student code begin here task 2
+    // Student code end here task 2
 }
 
 function placeShip(board, start, end) {
@@ -93,16 +95,25 @@ function placeShip(board, start, end) {
 }
 
 function placeMarkerHelper(board, startX, endX, startY, endY, marker) {
-    //NOTE: This is the code that the students must complete.
-    if(startX === endX) {
-      for(var y = startY; y <=endY; y++) {
-        board[startX][y] = marker
-      }
-    } else if(startY === endY) {
-      for(var x = startX; x <=endX; x++) {
-        board[x][startY] = marker
-      }
-    }
+    /**
+    * Given the board matrix and the start and end coordinates(startX, endX and startY, endY) of a ship, place the `marker` on the board. So calling placeMakerHelper(board, 1, 1, 6, 1, '*') on a 10*10 board
+    changes the board to:
+
+         1 2 3 4 5 6 7 8 9 10
+        ---------------------
+      A| E E E E E E E E E E
+      B| E * E E E E E E E E
+      C| E * E E E E E E E E
+      D| E * E E E E E E E E
+      E| E * E E E E E E E E
+      F| E * E E E E E E E E
+      G| E E E E E E E E E E
+      H| E E E E E E E E E E
+      I| E E E E E E E E E E
+      J| E E E E E E E E E E
+    * */
+    // Student code begin here task 2
+    // Student code end here task 2
 }
 
 /***************************************************************/

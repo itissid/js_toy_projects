@@ -117,6 +117,3 @@ The student's task is to figure out how to complete a function, `placeShipHelper
 A Thought Experiment: What happens if we place ships whose positions overlap? How might we change/add to the code to take care of this situation?
 
 In the next task you will learn how to make a move on the board and finally a function to play with a opponent.
-
-## Task 3
-TBD: A function that takes a grid coordinate and returns a true/false indicating a hit.
