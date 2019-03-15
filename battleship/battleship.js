@@ -61,7 +61,12 @@ function testPrintBoard() {
     ['E', '*', 'E', 'X', 'E'],
     ['E', '*', 'E', '!', 'E'],
     ['E', 'E', 'E', '*', 'E']]
-  console.log(boardAsString(board));
+  var boardString = "E E E E E\n"+
+    "E * X E E\n" + 
+    "E * E X E\n" +
+    "E * E ! E\n" +
+    "E E E E E\n";
+  assertEquals(boardAsString(board), boardString);
 }
 
 function testGenerateEmptyBoard() {
@@ -69,7 +74,41 @@ function testGenerateEmptyBoard() {
     if(emptyBoard.length != 10 && emptyBoard[0].length != 10) {
       throw Error("The empty board is not properly generated")
     }
-    console.log(boardAsString(emptyBoard))
+    var board = [
+        ['E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E'],
+        ['E', 'E', 'E', 'E', 'E']]
+    assertBoardEquals(board, emptyBoard);
 }
+
 testPrintBoard()
 testGenerateEmptyBoard()
+
+function assertEquals(x, y) {
+    if(x!==y) {
+        throw Error("x!=y; \nx=\n"+x+"\ny=\n"+y)
+    }
+}
+
+function assertNotEquals(x1, x2) {
+    if(x1 === x2) {
+        throw Error("x===y; \nx=\n"+x+"\ny=\n"+y)
+    }
+}
+
+function assertBoardEquals(b1, b2) {
+  var b1Str = boardAsString(b1);
+  var b2Str = boardAsString(b2);
+  if(b1.length !== b2.length || b1[0].length !== b2[0].length) {
+    throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
+  }
+  for(var i = 0; i < b1.length; i++) {
+    for(var j = 0; j< b1[i].length; j++) {
+      if (b1[i][j] !== b2[i][j]) {
+        throw Error("Boards are not equal length.\n"+ b1Str+"\n"+b2Str)
+      }
+    }
+  }
+}
