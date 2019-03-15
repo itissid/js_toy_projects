@@ -41,14 +41,8 @@ function boardAsString(board) {
   */
   var numberOfRows = board.length
   var numberOfCols = board[0].length
-  var boardStr = ""
-  for(var row = 0; row < numberOfRows; row++) {
-    for(var col = 0; col < numberOfCols; col++) {
-      boardStr += board[row][col] +" "
-    }
-    boardStr = boardStr.trim() +"\n"
-  }
-  return boardStr
+  // Student code start here task 1
+  // Student code end here task 1
 }
 
 /*------------ DO NOT CHANGE THE CODE BELOW -------------------*/
