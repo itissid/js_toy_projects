@@ -133,7 +133,6 @@ function initializeBoard() {
 }
 
 function forceRedraw() {
-    // TODO: Place a restart button in the game.
     // Kill the game in the middle.
     UI_INITIALIZED = true;
     MINE_BLOWN = false;
@@ -167,7 +166,6 @@ function initUIWidgets() {
     * This function is specific to code.org's API. It initializes the UI and
     * the event handlers that eventually
     **/
-    // TODO: Get students to complete most of this.
 
     button("redraw_canvas", "Redraw Minefield");
     setProperty("redraw_canvas", "text-align", "center");
@@ -208,7 +206,6 @@ function initUIWidgets() {
     });
 }
 
-// TODO: The following helper functions can be completed by students in a task.
 function canOpenCell(row, col) {
     if(FLAGGED_BOARD !== null && FLAGGED_BOARD[row][col] === 'F') {
         return false; // If there is a flag in the cell don't do anything; the user needs to remove the flag first to open it.
@@ -266,15 +263,8 @@ e location.
   *
   */
 
-    // TODO: Students can complete this as well.
-    if(board[row][column] === 'E') {
-        openSquare(board, row, column);
-    } else if (board[row][column] == 'M') {
-        blowMine(board, row, column);
-        MINE_BLOWN = true;
-        console.log("GAME OVER!");
-        // TODO: Display on the UI also.
-    }
+    // Students code begin here for task 3
+    // Students code end here for task 3
 }
 
 
@@ -300,15 +290,8 @@ function blowMine(board, row, column) {
         throw Error("Bad call to blow mine at location (" + row + ", "+ column + ") where no mine was present");
     }
     board[row][column] = 'X'
-    // Placeholder: Student Code begin for task 3
-    for(var i = 0; i < board.length; i++) {
-        for(var j = 0; j < board[i].length; j++) {
-            if(board[i][j] === 'M') {
-                board[i][j] = 'X'
-            }
-        }
-    }
-      // Student Code ends for task 3
+    // Students code begin here for task 3
+    // Students code end here for task 3
 }
 function openSquare(board, row, column) {
    openSquareHelper(board, row, column, {})
@@ -620,24 +603,24 @@ function updateFlag(row, col) {
 }
 
 function rowColToCanvasCoordinates(row, col) {
-    // Used for updating the canvas from the board matrix
-    // TODO: This could be something the students could complete.
-    return [S*col, S*row,
-    S+S*col, S+S*row];
+    /** Takes row and column as argument from callers.
+     * Returns an array containing 4 elements. The coordinates of the top left
+     * corner of the cell *and* the bottom right corner of the cell on the canvas.
+     *
+     * Used for updating the canvas from the board matrix
+     */
+    // Student Code begin for task 3
+    // Student Code ends for task 3
 }
 
 function eventCoordinatesToRowCol(x, y) {
-    // Used to update the board based on the click.
-    // Returns null if the click is outside the board,
-    // returns a size 2 array with the row and column
-    var row = parseInt(y/S);
-    var col = parseInt(x/S);
-    // TODO: Get students to write this check so that
-    // we can do proper error checking.
-    if(row >= NROW || col >= NCOL) {
-        return null
-    }
-    return [row, col];
+    /** This function takes the event location (x,y) on the minefield on the canvas
+     * Return an array of 2 elements that containing the row and column that
+     * would index into the board. If x,y translate to indices that are larger than NROW and NCOL
+     * then return null.
+     */
+    // Student Code begin for task 3
+    // Student Code ends for task 3
 }
 
 /****************************************************************************************/
