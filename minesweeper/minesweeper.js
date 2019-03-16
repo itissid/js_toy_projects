@@ -44,34 +44,34 @@ function boardAsString(board) {
   M 3 1 2 M
   */
 
-  numberOfRows = board.length
-  numberOfCols = board[0].length
-  boardStr = ""
-  for(row = 0; row < /*What goes here*/; row++) {
-    for(col = 0; col < /*What goes here?*/; col++) {
-      // Complete some code here to add to the string boardStr
+  var numberOfRows = board.length
+  var numberOfCols = board[0].length
+  var boardStr = ""
+  for(var row = 0; row < numberOfRows; row++) {
+    for(var col = 0; col < numberOfCols; col++) {
+        boardStr += board[row][col]+" ";
     }
-    // What would you do to the boardStr here?
+    boardStr = boardStr.trim() + '\n';
   }
-  // Just return a board string
   return boardStr
 }
 
 /*------------ DO NOT CHANGE THE CODE BELOW -------------------*/
-function printBoard() {
-  board1 = [
-    ['M', 'M', 'E', 'E', 'E'],
-    ['M', 'E', 'M', 'E', 'E'],
-    ['E', 'E', 'M', 'E', 'E'],
-    ['M', 'M', 'E', 'E', 'M'],
-    ['M', 'E', 'E', 'E', 'M']]
-  board2 = [
-      ['M', 'M', '2', '1', 'B'],
-      ['M', '5', 'M', '2', 'B'],
-      ['E', 'E', 'M', '3', '1'],
-      ['M', 'M', '2', '3', 'M'],
-      ['M', '3', '1', '2', 'M']]
-  console.log(boardAsString(board1));
-  console.log(boardAsString(board2));
+function testBoardToString() {
+    var board1 = [
+        ['M', 'M', 'E', 'E', 'E'],
+        ['M', 'E', 'M', 'E', 'E'],
+        ['E', 'E', 'M', 'E', 'E'],
+        ['M', 'M', 'E', 'E', 'M'],
+        ['M', 'E', 'E', 'E', 'M']]
+    console.log(boardAsString(board1));
+    assertEquals(boardAsString(board1), "M M E E E\nM E M E E\nE E M E E\nM M E E M\nM E E E M\n");
 }
-printBoard()
+
+function assertEquals(x, y) {
+    if(x!==y) {
+        throw Error("x!=y; \nx=\n"+x+"\ny=\n"+y)
+    }
+}
+testBoardToString()
+console.log("All tests run successfully");
