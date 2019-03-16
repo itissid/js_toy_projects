@@ -47,8 +47,8 @@ function boardAsString(board) {
   var numberOfRows = board.length
   var numberOfCols = board[0].length
   var boardStr = ""
-  // Begin code here.
-  // End code here.
+  // Begin code here for task 1.
+  // End code here for task 1.
 }
 
 /*------------ DO NOT CHANGE THE CODE BELOW -------------------*/
