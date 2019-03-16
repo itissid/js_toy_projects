@@ -49,7 +49,6 @@ function boardAsString(board) {
   var boardStr = ""
   // Begin code here.
   // End code here.
-  return boardStr
 }
 
 /*------------ DO NOT CHANGE THE CODE BELOW -------------------*/
