@@ -3,6 +3,8 @@ This directory contains code and this README for the game of battleship. You wil
 Battle ship is typically a 2 player board game where your objective is to sink all the enemy ships.[Here](https://www.thesprucecrafts.com/the-basic-rules-of-battleship-411069) are the rules to the game. You can play and familiarize your self with the game [here](http://www.battleshiponline.org/) or [here](http://en.battleship-game.org/).
 . The instructor needs an environment where students can run and debug javascript code. DO NOT DISTRIBUTE THIS README TO STUDENTS AS IT CONTAINS SPOILERS. For this task you will need to focus on the file `battleship.js` in the `battleship/` directory in the root of this repo. This README is a guide on how to use this task to help students get familiar with some code in javascript. Note that one can easily copy paste the code in `battleship.js` into a code.org workspace and just run it. All printed statements show out put in code.org's debug console:
 
+![alt text](assets/codedotorg_workspace_console.png "Note the denugging console printing things")
+
 ## Initialization
 - Your fleet has 5 ships a Carrier, Battleship, Cruiser, Submarine and a Destroyer. They are  of length 5,4,3,3 and 2 respectively laid out on a grid of 10 rows and 10
 columns which represent the area of operation. The rows are A-J and columns 1-10.
