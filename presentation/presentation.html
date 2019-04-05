@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Programming and fun</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="../lib/python3.6/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="../lib/python3.6/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+      
+      <link rel="stylesheet" href="assets/css/basic.css">
+      
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="../lib/python3.6/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>Programming and fun</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_notes slide-2">
+          <div class="inner">
+            
+            <header><h1>Why program?</h1></header>
+            
+            
+            <section><p>Solve a lot of interesting problems</p>
+<ul>
+<li>Building games, legos, mars rovers.</li>
+</ul>
+<p class="notes">Show the two games I built</p>
+<ul>
+<li>Build control software for things like automated cars</li>
+</ul>
+<p class="notes">Show inverted helicopter control software by Andrew NG</p>
+<ul>
+<li>Solving tough mathematical problems like “safe prime numbers”.</li>
+</ul>
+<p class="notes">Show a large prime number and maybe Snowden's picture.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            
+            <section><p><div class="wrapper">
+<img class = "box" src="assets/pics/WhackAMole.gif" alt="drawing" width="200", height="300"/>
+<img class = "box" src="assets/pics/opensquare_and_flag_demo.gif" alt="drawing" width="200", height="300"/></p>
+</div></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>Why program?</h1></header>
+            
+            
+            <section><p>For systems that power AI and Machine Learning.</p>
+<p>Sometimes for more controversial purposes</p>
+<ul>
+<li>Behavior modification: Like getting you to buy things online or influencing decisions</li>
+<li>With great power comes great responsibility!</li>
+</ul>
+<p>Earn a multi 6 figure salary with a few years of work.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-5">
+          <div class="inner">
+            
+            <header><h1>What am I going to tell you today</h1></header>
+            
+            
+            <section><p>Introduce to you some project ideas using a few games and (if time permits a bit of math.)</p>
+<p>Get you generally interested in programming</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h1>Game 1: Whack a mole.</h1></header>
+            
+            
+            <section><p>First gather “requirements”</p>
+<pre><code>- You want X number of moles to pop out randomly.
+- You want to be able to "hit" them with a mouse click.
+- You want to know at the end how many you moles you hit.
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code has_notes slide-7">
+          <div class="inner">
+            
+            <header><h1>Game 1: Whack a mole(First attempt).</h1></header>
+            
+            
+            <section><h2>There are a few ways to do it</h2>
+<p>You can draw a mole’s picture using functions like drawImage(id, x, y, w, h) which is a canvas function:</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nx">createCanvas</span><span class="p">();</span>
+<span class="lineno">2 </span><span class="nx">drawImage</span><span class="p">(</span><span class="s2">&quot;mole&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span><span class="c1">// or us drawImageURL(...);</span>
+<span class="lineno">3 </span><span class="nx">hideElement</span><span class="p">(</span><span class="s2">&quot;mole&quot;</span><span class="p">);</span>
+</pre></div>
+
+<p>This approach has a drawback.</p>
+<p class="notes">Drawback: the drawing an erasing of pixels on a canvas is not so hard, but we need to implement the logic where a mole was there when you "whacked" it.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code has_notes slide-8">
+          <div class="inner">
+            
+            <header><h1>Game 1: Whack a mole.</h1></header>
+            
+            
+            <section><p>Better Approach: use a different API.</p>
+<p class="notes">This is an important thing for professional development. You can reinvent the wheel or use the car</p>
+<p>You can use <code>setPosition()</code> to set the mole in <code>X,Y</code> plane on the screen.</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">function</span> <span class="nx">startGame</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2 </span>  <span class="nx">timedLoop</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">3 </span>    <span class="c1">// Get a random position on X, Y</span>
+<span class="lineno">4 </span>    <span class="c1">// Show the mole using setPosition</span>
+<span class="lineno">5 </span>    <span class="nx">setPosition</span><span class="p">(</span><span class="s2">&quot;mole&quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">w</span><span class="p">);</span>
+<span class="lineno">6 </span>  <span class="p">}</span>
+<span class="lineno">7 </span><span class="p">}</span>
+</pre></div>
+
+<p>Bonus: Can you add additional code that counts the number of whacked moles?
+ - This is the part where using <code>setPosition</code> really shines.</p>
+<p class="notes">Ask the students "Can you name a complementary function to setPosition" that can get the position of the moles?</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_notes slide-9">
+          <div class="inner">
+            
+            <header><h1>Game 1: Whack a mole(lessons learnt).</h1></header>
+            
+            
+            <section><p>What API do I use?</p>
+<p class="notes">This simple exercise gives a valuable lesson as to what kind  of API to use while designing simple games like this. Try doing both approaches and see which one is easier.</p>
+<p>So when should you use canvas based functions?</p>
+<p class="notes">when you want to change pixel level data, draw things geometrically(good segway into my next game)</p>
+<p>How to use basic javascript functions like <code>timedLoops</code> and <code>onEvent</code> to build full games.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-10">
+          <div class="inner">
+            
+            <header><h1>Game 2: Minesweeper.</h1></header>
+            
+            
+            <section><p>First gather “requirements”(i.e. what the game's core functions should do)</p>
+<ul>
+<li>A M*N minefield with certain % having a mine.</li>
+<li>clicking a square reveals the number of mines around it.</li>
+<li>Not all squares have mines around it.</li>
+<li>Place flags where you think there is a mine.</li>
+</ul>
+<p>We won't be able to implement all of the features, but get pretty close to the real thing.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-11">
+          <div class="inner">
+            
+            <header><h1>Playing Minesweeper.</h1></header>
+            
+            
+            <section><p><div class="wrapper">
+<img class = "box" src="assets/pics/opensquare_and_flag_demo.gif" alt="drawing" width="200", height="300"/>
+</div></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code has_notes slide-12">
+          <div class="inner">
+            
+            <header><h1>Minesweeper: Baby steps</h1></header>
+            
+            
+            <section><p>How does the board stored in memory?</p>
+<p>An Array of Arrays or a matrix</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="p">[</span>
+<span class="lineno">2 </span>  <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">],</span>
+<span class="lineno">3 </span>  <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">],</span>
+<span class="lineno">4 </span>  <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">],</span>
+<span class="lineno">5 </span>  <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">],</span>
+<span class="lineno">6 </span>  <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">]]</span>
+</pre></div>
+
+<p class="notes">Explain why an array of array is the DS to use here. It allows for accessing/indexing of any square efficiently. It is also easy to use for 1:1 translation to graphics.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-13">
+          <div class="inner">
+            
+            <header><h1>Minesweeper: Baby steps</h1></header>
+            
+            
+            <section><p>How does one generate an empty board?</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">function</span> <span class="nx">generateEmptyBoard</span><span class="p">(</span><span class="nx">rows</span><span class="p">,</span> <span class="nx">cols</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2 </span>  <span class="nx">board</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">3 </span>  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">row</span> <span class="o">&lt;</span> <span class="nx">rows</span><span class="p">;</span> <span class="nx">row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">4 </span>    <span class="nx">board</span><span class="p">.</span><span class="nx">push</span><span class="p">([])</span>
+<span class="lineno">5 </span>    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">col</span> <span class="o">&lt;</span> <span class="nx">cols</span><span class="p">;</span> <span class="nx">col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">6 </span>        <span class="nx">board</span><span class="p">[</span><span class="nx">row</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="lineno">7 </span>    <span class="p">}</span>
+<span class="lineno">8 </span>  <span class="p">}</span>
+<span class="lineno">9 </span><span class="p">}</span>
+</pre></div>
+
+<p>Using the basic structure of loop with in a loop can u print a board to the console?</p>
+<p>Can you guess how you can place mines on the field?</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-14">
+          <div class="inner">
+            
+            <header><h1>Minesweeper: Graphics is not so hard.</h1></header>
+            
+            
+            <section><p>Drawing a field:</p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="nx">NROW</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno"> 2 </span><span class="nx">NCOL</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno"> 3 </span><span class="nx">S</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="lineno"> 4 </span><span class="nx">setFillColor</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="lineno"> 5 </span><span class="nx">setStrokeColor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
+<span class="lineno"> 6 </span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">NROW</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7 </span>  <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span><span class="o">&lt;</span> <span class="nx">NCOL</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+<span class="lineno"> 8 </span>    <span class="c1">// Calculate the positions on the field on paper to get the formula</span>
+<span class="lineno"> 9 </span>    <span class="c1">// i    j   x   y</span>
+<span class="lineno">10 </span>    <span class="c1">//  0   0   0   0</span>
+<span class="lineno">11 </span>    <span class="c1">//  1   0   0   8</span>
+<span class="lineno">12 </span>    <span class="c1">//  2   0   0   16</span>
+<span class="lineno">13 </span>    <span class="c1">//...</span>
+<span class="lineno">14 </span>    <span class="c1">//  1   0   8   0</span>
+<span class="lineno">15 </span>    <span class="c1">//...</span>
+<span class="lineno">16 </span>    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">S</span><span class="o">*</span><span class="nx">j</span><span class="p">;</span>
+<span class="lineno">17 </span>    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">S</span><span class="o">*</span><span class="nx">i</span><span class="p">;</span>
+<span class="lineno">18 </span>    <span class="nx">rect</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">,</span> <span class="nx">S</span><span class="p">,</span> <span class="nx">S</span><span class="p">);</span>
+<span class="lineno">19 </span>  <span class="p">}</span>
+<span class="lineno">20 </span><span class="p">}</span>
+</pre></div>
+
+<p>Drawing mines are also easy take the center and draw a black circle.</p>
+<p>Drawing numbers and flags requires a bit more geometry.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_notes slide-15">
+          <div class="inner">
+            
+            <header><h1>Minesweeper: Blowing a mine.</h1></header>
+            
+            
+            <section><div class="wrapper">
+<img class = "box" src="assets/pics/blow_mine_demo.gif" alt="drawing" width="200", height="300"/>
+</div>
+
+<p class="notes">Picture of a mine field on code.org canvas</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code has_notes slide-16">
+          <div class="inner">
+            
+            <header><h1>Minesweeper: Graphics is not so hard.</h1></header>
+            
+            
+            <section><p>Key: You need to translate row and col integers to pixels</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">function</span> <span class="nx">rowColToCanvasCoordinates</span><span class="p">(</span><span class="nx">row</span><span class="p">,</span> <span class="nx">col</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2 </span>    <span class="k">return</span> <span class="p">[</span><span class="nx">S</span><span class="o">*</span><span class="nx">col</span><span class="p">,</span> <span class="nx">S</span><span class="o">*</span><span class="nx">row</span><span class="p">,</span>
+<span class="lineno">3 </span>    <span class="nx">S</span><span class="o">+</span><span class="nx">S</span><span class="o">*</span><span class="nx">col</span><span class="p">,</span> <span class="nx">S</span><span class="o">+</span><span class="nx">S</span><span class="o">*</span><span class="nx">row</span><span class="p">];</span>
+<span class="lineno">4 </span><span class="p">}</span>
+</pre></div>
+
+<p>And vice versa:</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">function</span> <span class="nx">eventCoordinatesToRowCol</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">2 </span>    <span class="kd">var</span> <span class="nx">row</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">y</span><span class="o">/</span><span class="nx">S</span><span class="p">);</span>
+<span class="lineno">3 </span>    <span class="kd">var</span> <span class="nx">col</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">x</span><span class="o">/</span><span class="nx">S</span><span class="p">);</span>
+<span class="lineno">4 </span>    <span class="c1">// Null if the click is OOB</span>
+<span class="lineno">5 </span>    <span class="k">if</span><span class="p">(</span><span class="nx">row</span> <span class="o">&gt;=</span> <span class="nx">NROW</span> <span class="o">||</span> <span class="nx">col</span> <span class="o">&gt;=</span> <span class="nx">NCOL</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">6 </span>        <span class="k">return</span> <span class="kc">null</span>
+<span class="lineno">7 </span>    <span class="p">}</span>
+<span class="lineno">8 </span>    <span class="k">return</span> <span class="p">[</span><span class="nx">row</span><span class="p">,</span> <span class="nx">col</span><span class="p">];</span>
+<span class="lineno">9 </span><span class="p">}</span>
+</pre></div>
+
+<p>Challenge: Can you use <code>rowColToCanvasCoordinates</code> to draw the empty and mined cells on the canvas?</p>
+<p class="notes">The key here is a random number generator and a prefixed % of mines. Example for a 10*10 board randomly generate 10 mines.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-17">
+          <div class="inner">
+            
+            <header><h1>Minesweeper: Wrap up</h1></header>
+            
+            
+            <section><p>You learn't how to represent a game board in memory.</p>
+<p>How to traverse it.</p>
+<p>How to translate the game board and its cells into graphics.</p>
+<p>Now you can build other games like Battleship, tic tac toe using these basic pieces.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-18">
+          <div class="inner">
+            
+            <header><h1>Thank you!</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source:  -->
+      <div class="slide-wrapper">
+        <div class="slide slide-">
+          <div class="inner">
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="page_number">
+              /18
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Programming and fun</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Why program?</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">-</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Why program?</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">What am I going to tell you today</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Game 1: Whack a mole.</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Game 1: Whack a mole(First attempt).</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Game 1: Whack a mole.</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Game 1: Whack a mole(lessons learnt).</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Game 2: Minesweeper.</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Playing Minesweeper.</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Minesweeper: Baby steps</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Minesweeper: Baby steps</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Minesweeper: Graphics is not so hard.</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Minesweeper: Blowing a mine.</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Minesweeper: Graphics is not so hard.</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Minesweeper: Wrap up</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Thank you!</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
