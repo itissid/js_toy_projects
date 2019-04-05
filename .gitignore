@@ -3,3 +3,11 @@ hangman/*
 minesweeper/*
 .DS_Store
 attachments/*
+.Python
+*.swp
+bin/
+include/
+lib/
+pip-selfcheck.json
+scratch
+vim-markdown-preview.html
